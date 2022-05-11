@@ -14,7 +14,7 @@
                         <div class="add-dctr">
                             <div class="container">
 
-                                @include('layouts.includes.alerts')
+                          
                                 <form action="{{ route('update-password') }}" method="POST">
                                     @csrf
 

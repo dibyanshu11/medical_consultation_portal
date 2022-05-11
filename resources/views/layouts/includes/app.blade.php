@@ -18,13 +18,13 @@
             @include('layouts.includes.header')
             <div class="container tab-body">
                 <div row>
-                  
+
                     <div class="d-flex align-items-start tab-main">
                         <div class=" menu-bar col-md-3">
                             @include('layouts.includes.sidebar')
                         </div>
                         <div class="tab-data col-md-9">
-                        @include('layouts.includes.alerts')
+                            @include('layouts.includes.alerts')
                             <div class="tab-content" id="v-pills-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="container">
@@ -59,6 +59,18 @@
         $(".toggle img").click(function() {
             $(".menu-bar").toggleClass("menu_toggle");
         })
+    });
+    $("input").keyup(function() {
+        var id = $(this).attr("id");
+        if (id == 'Primary') {
+            caps = caps.charAt(0).toLowerCase() + caps.slice(1);
+            $('#' + id + '').val(caps);
+        } else {
+            var caps = jQuery('#' + id + '').val();
+            caps = caps.charAt(0).toUpperCase() + caps.slice(1);
+            $('#' + id + '').val(caps);
+        }
+
     });
 </script>
 

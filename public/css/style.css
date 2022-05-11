@@ -7,7 +7,7 @@
     display: none;
 }
 
-.nav-tabs {
+.nav-tabs {      
     border-bottom: none;
 }
 
@@ -1482,6 +1482,8 @@ input::-webkit-inner-spin-button {
 .lower-txt {
     padding: 12px;
 }
+
+
 /*verify-email page css end here */
 /*media started here */
 
@@ -1549,6 +1551,5 @@ input::-webkit-inner-spin-button {
         display: flex;
         justify-content: end;
     }
-    select#state ::before {
-        content: url(public\images\Vector1.png);
-    }
+
+    

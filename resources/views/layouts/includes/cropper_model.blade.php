@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="img-container">
+                <div class="img-container">  
                     <div class="row">
                         <div class="col-md-8">
                             <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">

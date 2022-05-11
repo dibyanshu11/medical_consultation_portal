@@ -14,7 +14,6 @@
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="container">
 
-                            @include('layouts.includes.alerts')
                             <form action="{{ route('update-profile') }}" method="POST">
                                 @csrf
                                 <div class="row">
@@ -69,6 +68,7 @@
         $("#file").click();
     }
 
+
     var $modal = $('#modal');
     var image = document.getElementById('image');
     var cropper;
@@ -106,7 +106,7 @@
         cropper = new Cropper(image, {
             aspectRatio: 1,
             viewMode: 4,
-            preview: '.preview'
+            preview: '.preview',
         });
     }).on('hidden.bs.modal', function() {
         cropper.destroy();

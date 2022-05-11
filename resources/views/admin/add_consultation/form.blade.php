@@ -99,7 +99,7 @@
         <div class="col-md-12">
             <label for="response">Create Video Response</label><br>
             {!! Form::label('video_response','Video Response', ['class' => 'control-label']) !!}
-            {!! Form::textarea('video_response', null, ['id'=>'Phrases','class' => 'form-control response' . ($errors->has('video_response') ? ' is-invalid' : '') ]) !!}
+            {!! Form::textarea('video_response', null, ['id'=>'video_response','class' => 'form-control response' . ($errors->has('video_response') ? ' is-invalid' : '') ]) !!}
             {!! $errors->first('video_response', '<span class="help-block">:message</span>') !!}
 
         </div>
@@ -131,6 +131,13 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
+        });
+
+        $("#video_response").keyup(function() {
+            var id = $(this).attr("id");
+            var caps = jQuery('#' + id + '').val();
+            caps = caps.charAt(0).toUpperCase() + caps.slice(1);
+            $('#' + id + '').val(caps);
         });
 
         $('input[name="keywords"]').tagsinput({

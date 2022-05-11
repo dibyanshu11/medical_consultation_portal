@@ -3,13 +3,14 @@
 
         <h4>Offices</h4>
 
+       
+        <div class="col-md-5">
+            <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
+        </div>
         <div class="col-md-7">
             <div class="add-btn">
                 <a href="{{ route('create-office') }}" class="custom-button">Add Office</a>
             </div>
-        </div>
-        <div class="col-md-5">
-            <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
         </div>
 
     </div>
@@ -19,7 +20,7 @@
 
                 <th>Sr.</th>
                 <th>Name</th>
-                <th>Address</th>
+                <th width="35%">Address</th>
                 <th>Created At</th>
                 <th>Action</th>
             </tr>

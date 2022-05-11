@@ -45,14 +45,16 @@
                                     <input type="email" id="Primary" name="email" value="{{$admin->email}}" autocomplete="email">
                                     @error('email') <span ...>{{ $message }}</span> @enderror
                                 </div>
-                                <div class="col-md-12">
+                                <div class="email-btn">
+                        <input type="submit" value="Update Email">
+                       
                                     <div class="change-password">
-                                        <a class="custom-button" href="{{ route('change-password') }}">click to change password</a>
+                                        <a class="custom-button" href="{{ route('change-password') }}">Change password</a>
                                     </div>
                                 </div>
-
+                       
                         </div>
-                        <input type="submit" value="Update Email">
+                        
                         </form>
 
                     </div>

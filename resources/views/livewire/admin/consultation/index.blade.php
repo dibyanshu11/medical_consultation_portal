@@ -2,20 +2,20 @@
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
         <div class="container">
-          
+
 
             <div class="row top-search-bar">
 
-                <h4>Consultation List
-                </h4>
+                <h4>Consultation List </h4>
+                <div class="col-md-5">
+                    <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
+                </div>
                 <div class="col-md-7">
                     <div class="add-btn">
                         <a href="{{ route('add-consultation') }}" class="custom-button">Add Consultation</a>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
-                </div>
+
             </div>
 
 

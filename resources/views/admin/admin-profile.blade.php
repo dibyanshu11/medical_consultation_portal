@@ -100,8 +100,8 @@
                 reader.readAsDataURL(file);
             }
         }
-    });
-
+    });           
+                          
     $modal.on('shown.bs.modal', function() {
         cropper = new Cropper(image, {
             aspectRatio: 1,

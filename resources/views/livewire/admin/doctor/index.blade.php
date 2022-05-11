@@ -5,16 +5,15 @@
           
 
             <div class="row top-search-bar">
-                <h4>Doctor List
-                </h4>
+                <h4>Doctor List </h4>
+                <div class="col-md-5">
+                    <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
+                </div>
 
                 <div class="col-md-7">
                     <div class="add-btn">
                         <a href="{{ route('add-doctor') }}" class="custom-button">Add Doctor</a>
                     </div>
-                </div>
-                <div class="col-md-5">
-                    <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
                 </div>
 
             </div>

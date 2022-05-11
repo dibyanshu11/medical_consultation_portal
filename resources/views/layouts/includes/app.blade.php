@@ -12,11 +12,7 @@
 </head>
 
 <body>
-    <div class="menu_toogle">
-        <div class="toggle">
-            <img src="{{asset('images/menu.png')}}">
-        </div>
-    </div>
+
     <div>
         <div>
             @include('layouts.includes.header')

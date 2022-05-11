@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container  tab-body">
+
     <div row>
         <div class="d-flex align-items-start tab-main">
             
@@ -12,18 +12,18 @@
                   
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                        <div class="container">
+                     
                           
                             @livewire('admin.office.index')
 
-                        </div>
+                      
                     </div>
                     
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 @endsection
 

@@ -18,7 +18,7 @@
 
             </div>
 
-
+            <div class="table-outter">
             <table class="table  table-borderless Patient-History-tb table-sm data-table">
                 <thead>
                     <tr>
@@ -55,6 +55,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
             {{ $consultations->links('pagination::bootstrap-4')}}
 
         </div>

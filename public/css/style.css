@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .menu-bar {
     display: flex;
 }
@@ -7,7 +8,7 @@
     display: none;
 }
 
-.nav-tabs {      
+.nav-tabs {
     border-bottom: none;
 }
 
@@ -84,7 +85,13 @@ ul.nav-menu {
     user-select: none;
 }
 
-.active svg {
+#select-doctor {
+    background: #f6f6f6 url(../images/Vector.png) no-repeat;
+    background-position-x: 95%;
+    background-position-y: 20px;
+}
+
+.bootstrap-tagsinput .active svg {
     fill: #139980 !important;
 }
 
@@ -219,7 +226,8 @@ a.custom-button {
     font-family: 'work sans';
     text-decoration: none;
 }
-.add-btn{
+
+.add-btn {
     display: flex;
     justify-content: end;
 }
@@ -237,7 +245,7 @@ a.custom-button:hover {
 }
 
 .add-dctr form {
-    width:  70%;
+    width: 70%;
 }
 
 input[type="submit"] {
@@ -289,6 +297,7 @@ input#Officename {
     outline: none;
     margin-bottom: 15px;
     padding: 10px;
+
 }
 
 input#Address {
@@ -383,6 +392,7 @@ select#Practice {
 .add-morebtn {
     margin-bottom: 20px;
 }
+
 /* Create Cosultation */
 
 input#response {
@@ -457,6 +467,7 @@ select#select-office {
     background-position: right;
     background-position-x: 98%;
 }
+
 /*  Patient History */
 
 tr.table-active {
@@ -506,6 +517,7 @@ tr td {
     font-size: 17px;
     font-weight: 600;
 }
+
 /* account */
 
 .p-email input {
@@ -545,6 +557,7 @@ input#New {
     margin-bottom: 15px;
     padding: 10px;
 }
+
 /* support */
 
 .Search-any {
@@ -746,9 +759,11 @@ button.accordion-button.collapsed {
     background-size: auto;
     transition: transform .2s ease-in-out;
 }
+
 .container {
     max-width: 1400px !important;
 }
+
 .accordion-button:not(.collapsed)::after {
     background-image: url(img/arrow-up.png);
 }
@@ -756,6 +771,7 @@ button.accordion-button.collapsed {
 input#featured-1 {
     border-radius: 100%;
 }
+
 /* Offices */
 
 .check-container {
@@ -766,12 +782,14 @@ input#featured-1 {
     cursor: pointer;
     font-size: 25px;
 }
+
 /* Hide the default checkbox */
 
 .check-container input {
     visibility: hidden;
     cursor: pointer;
 }
+
 /* Create a custom checkbox */
 
 .mark {
@@ -795,6 +813,7 @@ input#featured-1 {
     border: #139980;
     cursor: pointer;
 }
+
 /* Create the mark/indicator (hidden when not checked) */
 
 .mark:after {
@@ -803,12 +822,14 @@ input#featured-1 {
     display: none;
     cursor: pointer;
 }
+
 /* Show the mark when checked */
 
 .check-container input:checked~.mark:after {
     display: block;
     cursor: pointer;
 }
+
 /* Style the mark/indicator */
 
 .check-container .mark:after {
@@ -856,6 +877,19 @@ a.card-link {
 .card-body.Consultation-card {
     min-height: 219px;
 }
+
+.email-btn {
+    display: flex;
+}
+
+input[type="submit"] {
+    margin-right: 24%;
+}
+
+.table-outter {
+    overflow: auto;
+}
+
 /* responsive */
 
 @media screen and (max-width: 1024px) {
@@ -863,49 +897,78 @@ a.card-link {
         position: relative;
         top: -133px;
     }
+
+    .add-dctr form {
+        width: 100% !important;
+    }
+
+    .bootstrap-tagsinput {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .doctor-container .text-muted {
+        margin-left: 0px !important;
+    }
+
+    .Video-Link .bootstrap-tagsinput {
+        width: 100%;
+    }
+
     .menu-bar .nav-link {
         font-size: 16px;
     }
+
     div#v-pills-tab {
         padding: 130px 0px;
     }
+
     input#Keywords {
         width: 100%;
         margin-left: 0px;
     }
+
     input#Questions {
         width: 100%;
         margin-left: 0px;
     }
+
     input#Phrases {
         width: 100%;
         margin-left: 0px;
     }
+
     .add-label {
         flex-direction: column;
     }
+
     h5.card-title {
         font-size: 14px;
         color: #3f3f44;
         font-weight: bold;
         font-family: "Work Sans";
     }
+
     .Featured .row {
         width: 100%;
     }
+
     .Featured .card {
         width: 100% !important;
     }
+
     .your-questions:before {
         left: 242px;
         width: 76.32%;
         height: 252px;
     }
+
     .Browse-menu li {
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
     span.select2.select2-container.select2-container--default {
         width: 100% !important;
     }
@@ -915,68 +978,99 @@ a.card-link {
     .nav-icon1 svg {
         margin-right: 10px;
     }
+
+    .col-md-9 {
+        -ms-flex: 0 0 75%;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
     .account .row {
         width: 100%;
     }
+
+
+    .doctor-container .text-muted {
+        margin-left: 0px !important;
+        margin-bottom: 10px;
+    }
+
     .col-md-6.Upload-img {
         position: relative;
         left: 0px;
     }
+
     form {
         width: 80%;
     }
+
     .menu-bar .nav-link {
         font-size: 14px;
     }
+
     .Patient-History-tb.table-sm th {
         font-size: 13px;
     }
+
     .tab-data.col-md-9 {
         max-width: 72%;
     }
+
     .Patient-History-tb a {
         color: #12997fed;
         font-size: 13px;
         text-decoration: none;
         font-weight: 900;
     }
+
     .Patient-History-tb td {
         font-size: 14px !important;
     }
+
     .tab-data label {
         font-size: 14px;
     }
+
     .tab-body {
         padding: 0px 0px;
         padding-bottom: 84px;
     }
+
     .nav-icon2 svg {
         margin-right: 19px;
     }
+
     .nav-icon3 svg {
         margin-right: 11px;
     }
+
     .nav-icon4 svg {
         width: 19px;
     }
+
     .nav-icon5 svg {
         width: 19px;
     }
+
     .menu-bar {
         width: 28%;
     }
+
     .your-questions:before {
         left: 198px;
         width: 75.59%;
         height: 252px;
     }
+
     .Featured .card {
         width: 18rem !important;
         margin-bottom: 20px;
     }
+
     .Featured .row {
         flex-direction: column;
     }
+
     .your-questions h2 {
         padding-top: 55px;
         font-size: 28px;
@@ -984,6 +1078,7 @@ a.card-link {
         font-weight: bold;
         font-family: "Work Sans";
     }
+
     .Browse-menu ul li {
         border: 2px solid #f6f6f6;
         border-radius: 10px;
@@ -995,6 +1090,76 @@ a.card-link {
         font-family: "Work Sans";
         text-align: center;
     }
+
+    .p-email input {
+        width: 100% !important;
+    }
+
+    input[type="submit"] {
+        margin-right: 14%;
+    }
+
+    ul.nav-menu {
+        border-right: solid 2px #f8f8f8;
+        position: fixed;
+        padding: 125px 20px 190px 20px;
+        top: 0px;
+        background: #fff;
+        position: relative;
+    }
+
+    .bootstrap-tagsinput {
+        width: 100% !important;
+        margin-bottom: 5px !important;
+        margin-left: 0px !important;
+    }
+
+    .toggle img {
+        z-index: 2;
+    }
+
+    .add-dctr form {
+        width: 85%;
+    }
+
+    .menu_toogle {
+        display: block;
+    }
+
+    ul.nav-menu {
+        padding-top: 30px;
+    }
+
+    .menu-bar {
+        position: absolute !important;
+        z-index: 1;
+        top: 0px;
+        min-width: 77% !important;
+        left: -100%;
+    }
+
+    .menu_toogle {
+        padding: 15px;
+    }
+
+    .menu_toogle .toggle {
+        display: flex;
+        justify-content: right;
+        height: 20px;
+    }
+
+    .menu_toggle {
+        left: 0% !important;
+        transition: 0.3s;
+    }
+
+    .form-section {
+        width: 80%;
+    }
+
+    .form-section1 {
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 414px) {
@@ -1002,58 +1167,100 @@ a.card-link {
         max-width: 100%;
         padding: 15px;
     }
-    .container{
+
+    .user_profile {
+        position: absolute !important;
+        right: 183px !important;
+        top: -10px !important;
+    }
+
+    a.custom-button {
+        width: 100%;
+    }
+
+    .change-password {
+        justify-content: start;
+    }
+
+    .email-btn {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .container {
         padding: 0 !important;
     }
+
+
+
+
+
     .add-dctr form {
-        width: 100% !important; 
+        width: 100% !important;
     }
+
     .col-md-6.Upload-img {
         position: relative;
         left: 0;
     }
+
+    input[type="submit"] {
+        margin-right: 0px;
+        gap: 20px;
+    }
+
     .tab-main {
         display: flex !important;
         flex-direction: column !important;
     }
+
     .notificatio-icon {
         display: flex;
     }
+
     .menu-bar {
         display: flex;
         width: 100%;
     }
+
     div#v-pills-tab {
         border-right: none;
         padding: 30px 0px;
         position: inherit;
         bottom: 133px;
     }
+
     select#state {
         background-position-x: 97%;
     }
+
     ul.doctor-profile {
         list-style: none;
         padding-top: 25px;
-        justify-content: space-between !important ;
+        justify-content: space-between !important;
         padding-left: 0;
     }
+
     .add-label {
         display: flex;
         flex-direction: column;
     }
+
     input#Keywords {
         width: 100%;
         margin-left: 0px;
     }
+
     input#Questions {
         width: 100%;
         margin-left: 0px;
     }
+
     input#Phrases {
         width: 100%;
         margin-left: 0px;
     }
+
     .Browse-menu ul li {
         border: 2px solid #f6f6f6;
         border-radius: 10px;
@@ -1068,6 +1275,7 @@ a.card-link {
         justify-content: center;
         align-items: center;
     }
+
     li.all-topics a {
         font-size: 10px;
         color: #2626ff !important;
@@ -1076,6 +1284,7 @@ a.card-link {
         text-align: center;
         text-decoration: none;
     }
+
     .your-questions:before {
         content: '';
         background: #f7f7f8;
@@ -1086,17 +1295,21 @@ a.card-link {
         width: 100%;
         min-height: 280px;
     }
+
     .ask-btn-section span {
         text-align: center;
     }
+
     .Search-any {
         margin-bottom: 0;
     }
+
     .ask-btn-section {
         margin-top: 0px;
         display: flex;
         flex-direction: column;
     }
+
     .your-questions h2 {
         padding-top: 20px;
         font-size: 29px;
@@ -1104,20 +1317,25 @@ a.card-link {
         font-weight: bold;
         font-family: "Work Sans";
     }
+
     .Search-any {
         margin-top: 15px;
     }
+
     a.ask-btn {
         text-align: center;
     }
+
     .Featured .card {
         /* margin: auto; */
         margin-bottom: 25px;
     }
+
     .Activity-titel h4 {
         margin-top: 15px;
         margin-bottom: 10px;
     }
+
     /* croppie css */
 }
 
@@ -1221,12 +1439,13 @@ input:focus+label {
 
 .doctor-image {
     border-radius: 50%;
-    
+
     height: 100px;
     position: relative;
     left: 14px;
     top: 7%;
 }
+
 /* for tags */
 
 .bootstrap-tagsinput {
@@ -1281,6 +1500,7 @@ input {
     font-style: italic;
     font-weight: 700;
 }
+
 /* add doctor */
 
 #img-preview {
@@ -1321,9 +1541,12 @@ input {
 img.user-prf-img {
     border-radius: 50%;
     height: 60px;
-    width: 60px;
 }
-
+.dr-img img.user-prf-img {
+    border-radius: 50%;
+    height: 30px;
+    margin-right: 5px;
+}
 .select2-container--default .select2-selection--multiple {
     width: 100%;
     border-radius: 10px;
@@ -1399,6 +1622,7 @@ a {
 form.login-form {
     width: 100%;
 }
+
 /* / signup / */
 
 .sign-up input[type="text"],
@@ -1414,6 +1638,7 @@ form.login-form {
     font-weight: 500;
     outline: none;
 }
+
 /*Register page css start here */
 
 form.sign-up {
@@ -1463,6 +1688,7 @@ input::-webkit-inner-spin-button {
     outline: none;
     border-radius: 10px;
 }
+
 /*Register page css end here */
 /*verify-email page css start here */
 
@@ -1487,69 +1713,32 @@ input::-webkit-inner-spin-button {
 /*verify-email page css end here */
 /*media started here */
 
-@media only screen and (max-width: 768px) {
-    ul.nav-menu {
-        border-right: solid 2px #f8f8f8;
-        position: fixed;
-        padding: 125px 20px 190px 20px;
-        top: 0px;
-        background: #fff;
-        position: relative;
-    }
-    .toggle img {
-        z-index: 2;
-    }
-    .add-dctr form {
-        width: 85%;
-    }
-    .menu_toogle {
-        display: block;
-    }
-    ul.nav-menu {
-        padding-top: 30px;
-    }
-    .menu-bar {
-        position: absolute !important;
-        z-index: 1;
-        top: 0px;
-        min-width: 77% !important;
-        left: -100%;
-    }
-    .menu_toogle {
-        padding: 15px;
-    }
-    .menu_toogle .toggle {
-        display: flex;
-        justify-content: right;
-        height: 20px;
-    }
-    .menu_toggle {
-        left: 0% !important;
-        transition: 0.3s;
-    }
-    .form-section {
-        width: 80%;
-    }
-    .form-section1 {
-        width: 80%;
-    }
+@media only screen and (max-width: 768px) {}
+
+/*media end here */
+/* -------------------------------------*/
+.page-link {
+    color: #12997f !important;
 }
-    /*media end here */
-    /* -------------------------------------*/
-    .page-link {
-        color: #12997f !important;
-    }
-    .page-item.active .page-link {
-        background-color:  #12997f !important;
-        color:#fff !important;
-        border: #12997f !important;
-    }
+
+.page-item.active .page-link {
+    background-color: #12997f !important;
+    color: #fff !important;
+    border: #12997f !important;
+}
 
 
-    .change-password {
+.change-password {
 
-        display: flex;
-        justify-content: end;
-    }
+    display: flex;
+    justify-content: end;
+}
 
-    
+.bootstrap-tagsinput {
+    box-shadow: none !important;
+}
+
+td.dr-img {
+    display: flex;
+    align-items: center;
+}

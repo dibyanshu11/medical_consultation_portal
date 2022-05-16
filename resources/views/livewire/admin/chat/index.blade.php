@@ -9,7 +9,7 @@
             <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
         </div>
     </div>
-
+    <div class="table-outter">
     <table class="table  table-borderless Patient-History-tb table-sm ">
         <thead>
             <tr>
@@ -43,5 +43,6 @@
 
         </tbody>
     </table>
+    </div>
     {{ $chats->links('pagination::bootstrap-4')}}
 </div>

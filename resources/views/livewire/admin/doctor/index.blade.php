@@ -17,8 +17,8 @@
                 </div>
 
             </div>
-
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <div class="table-outter">
+            <table id="example" class="display table  table-borderless Patient-History-tb table-sm datatable data-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Sr.</th>
@@ -35,7 +35,7 @@
                     <input type="hidden" id="select_delete" value="{{$doctor->id}}">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $doctor->office_name }}</td>
-                        <td><img class="user-prf-img" alt="Profile" src="{{ $doctor->doctor_pic }}" />{{$doctor->first_name}} {{$doctor->last_name}}</td>
+                        <td class="dr-img"><img class="user-prf-img" alt="Profile" src="{{ $doctor->doctor_pic }}" />{{$doctor->first_name}} {{$doctor->last_name}}</td>
                         <td>{{ $doctor->practice }}</td>
                         <td>{{ $doctor->created_at->format('M d, Y') }}</td>
 
@@ -57,6 +57,7 @@
                 </tbody>
 
             </table>
+            </div>
             {{ $doctors->links('pagination::bootstrap-4')}}
 
 

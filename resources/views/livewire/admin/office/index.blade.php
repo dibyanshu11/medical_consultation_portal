@@ -14,6 +14,7 @@
         </div>
 
     </div>
+    <div class="table-outter">
     <table class="table  table-borderless Patient-History-tb table-sm datatable data-table">
         <thead>
             <tr>
@@ -51,5 +52,6 @@
 
         </tbody>
     </table>
+    </div>
     {{ $offices->links('pagination::bootstrap-4')}}
 </div>

@@ -13,6 +13,7 @@ class Doctor extends Model
         'office_name',
         'first_name',
         'last_name',
+        'full_name',
         'doctor_pic',
         'practice',
 

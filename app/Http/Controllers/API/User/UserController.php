@@ -319,8 +319,8 @@ class UserController extends Controller
             ], 400);
         }
     }
-    
-      public function doctorUserChat(Request $request)
+
+    public function doctorUserChat(Request $request)
     {
         $isDoctorExist = Doctor::where('id', '=', $request->doctor_id)->count();
         if ($isDoctorExist == 0) {
@@ -353,5 +353,45 @@ class UserController extends Controller
         return [
             'message' => 'You have successfully logged out and the token was successfully deleted'
         ];
+    }
+
+
+    public function summeryListing()
+    {
+        try {
+
+            $doctors = Chat::where('user_id', Auth::user()->id)->with('doctor')->get();
+
+            return response()->json([
+                "ReturnCode" => 1,
+                "ReturnMessage" => "Chat summery listing.",
+                "data" => $doctors
+            ], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                "ReturnCode" => 0,
+                "error" => $e,
+            ], 400);
+        }
+    }
+
+    public function viewSummery(Request $request)
+    {
+
+        try {
+
+            $view_chat = Chat::where('user_id', Auth::user()->id)->where('id', $request->chat_id)->with('doctor')->get();;
+
+            return response()->json([
+                "ReturnCode" => 1,
+                "ReturnMessage" => "view chat Summery.",
+                "data" => $view_chat
+            ], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                "ReturnCode" => 0,
+                "error" => $e,
+            ], 400);
+        }
     }
 }

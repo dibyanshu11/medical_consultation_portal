@@ -74,6 +74,7 @@ class AdminDoctorController extends Controller
         $doctor->doctor_pic = $image_name;
         $doctor->first_name = $request->first_name;
         $doctor->last_name = $request->last_name;
+        $doctor->full_name =$request->first_name.' '. $request->last_name;
         $doctor->practice = $practice;
         $doctor->save();
         session()->flash('success', 'Doctor Added Successfully');
@@ -119,6 +120,7 @@ class AdminDoctorController extends Controller
             "office_name" => $office->office_name,
             "first_name" => $request['first_name'],
             "last_name" => $request['last_name'],
+            "full_name" =>$request['first_name'].' '.$request['last_name'],
             "practice" => $practice,
         ], $data);
 

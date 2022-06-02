@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'fc01559a2d5c65417f6a2a7fdff61fc411cb5fb7',
+        'reference' => '451d67b599ee3035226b37270f305163b1e4976c',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -33,6 +33,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'darkaonline/l5-swagger' => array(
+            'pretty_version' => '8.3.2',
+            'version' => '8.3.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../darkaonline/l5-swagger',
+            'aliases' => array(),
+            'reference' => 'e65fa1bd94a4f19282864f63c92d21902ec77aa3',
+            'dev_requirement' => false,
         ),
         'dasprid/enum' => array(
             'pretty_version' => '1.0.3',
@@ -65,6 +74,15 @@
             'install_path' => __DIR__ . '/../dflydev/dot-access-data',
             'aliases' => array(),
             'reference' => '0992cc19268b259a39e86f296da5f0677841f42c',
+            'dev_requirement' => false,
+        ),
+        'doctrine/annotations' => array(
+            'pretty_version' => '1.13.2',
+            'version' => '1.13.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/annotations',
+            'aliases' => array(),
+            'reference' => '5b668aef16090008790395c02c893b1ba13f7e08',
             'dev_requirement' => false,
         ),
         'doctrine/inflector' => array(
@@ -424,7 +442,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'fc01559a2d5c65417f6a2a7fdff61fc411cb5fb7',
+            'reference' => '451d67b599ee3035226b37270f305163b1e4976c',
             'dev_requirement' => false,
         ),
         'laravel/passport' => array(
@@ -850,6 +868,15 @@
             'reference' => '26c4c5cf30a2844ba121760fd7301f8ad240100b',
             'dev_requirement' => false,
         ),
+        'psr/cache' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/cache',
+            'aliases' => array(),
+            'reference' => 'aa5030cfa5405eccfdcb1083ce040c2cb8d253bf',
+            'dev_requirement' => false,
+        ),
         'psr/container' => array(
             'pretty_version' => '2.0.2',
             'version' => '2.0.2.0',
@@ -937,8 +964,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1185,6 +1212,15 @@
             'install_path' => __DIR__ . '/../stella-maris/clock',
             'aliases' => array(),
             'reference' => '8a0a967896df4c63417385dc69328a0aec84d9cf',
+            'dev_requirement' => false,
+        ),
+        'swagger-api/swagger-ui' => array(
+            'pretty_version' => 'v4.11.1',
+            'version' => '4.11.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../swagger-api/swagger-ui',
+            'aliases' => array(),
+            'reference' => 'c70b9d7b7c4f59229c81e897fc8fd09e0e1361cd',
             'dev_requirement' => false,
         ),
         'symfony/console' => array(
@@ -1442,6 +1478,15 @@
             'reference' => 'fa61dfb4bd3068df2492013dc65f3190e9f550c0',
             'dev_requirement' => false,
         ),
+        'symfony/yaml' => array(
+            'pretty_version' => 'v6.0.3',
+            'version' => '6.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/yaml',
+            'aliases' => array(),
+            'reference' => 'e77f3ea0b21141d771d4a5655faa54f692b34af5',
+            'dev_requirement' => false,
+        ),
         'theseer/tokenizer' => array(
             'pretty_version' => '1.2.1',
             'version' => '1.2.1.0',
@@ -1485,6 +1530,15 @@
             'install_path' => __DIR__ . '/../webmozart/assert',
             'aliases' => array(),
             'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+            'dev_requirement' => false,
+        ),
+        'zircote/swagger-php' => array(
+            'pretty_version' => '4.4.2',
+            'version' => '4.4.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../zircote/swagger-php',
+            'aliases' => array(),
+            'reference' => '1653b53eb3973a9a6dac87ef8f2676801b14469f',
             'dev_requirement' => false,
         ),
     ),

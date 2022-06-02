@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('searchkeydatas', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('doctor_id');
-            $table->string('searchkey');
-            $table->text('chat');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('searchkeydatas');
+        Schema::dropIfExists('chats');
     }
 };

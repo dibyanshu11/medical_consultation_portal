@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Searchkeydatas extends Model
+class ChatData extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'doctor_id',
-        'searchkey',
-        'chat',
+        'chat_id',
+        'key',
+        'chat_data',
     ];
 
-    public function doctor()
+    public function chat()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Chat::class);
     }
 }

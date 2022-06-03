@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chat;
 use App\Models\Doctor;
-use App\Models\Searchkeydatas;
-
+use App\Models\ChatData;
+use App\Mail\RegisterOtp;
+use App\Mail\PasswordResetOtp;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use DB;
 use Mail;
-use App\Mail\RegisterOtp;
-use App\Mail\PasswordResetOtp;
 
 class UserController extends Controller
 {
@@ -362,7 +361,7 @@ class UserController extends Controller
     {
         try {
 
-            $doctors = Searchkeydatas::where('user_id', Auth::user()->id)->with('doctor')->get();
+            $doctors = Chat::where('user_id', Auth::user()->id)->with('doctor', 'user')->get();
 
             return response()->json([
                 "ReturnCode" => 1,
@@ -379,10 +378,8 @@ class UserController extends Controller
 
     public function viewSummery(Request $request)
     {
-
         try {
-
-            $view_chat = Searchkeydatas::where('user_id', Auth::user()->id)->where('doctor_id', $request->doctor_id)->with('doctor')->get();;
+            $view_chat = Chat::where('id', $request->chat_id)->with('chat_data', 'user', 'doctor')->get();
 
             return response()->json([
                 "ReturnCode" => 1,

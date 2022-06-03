@@ -1742,3 +1742,7 @@ td.dr-img {
     display: flex;
     align-items: center;
 }
+
+svg {
+    width:20px;
+}

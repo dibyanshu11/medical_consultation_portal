@@ -45,15 +45,15 @@
                                     @error('email') <span ...>{{ $message }}</span> @enderror
                                 </div>
                                 <div class="email-btn">
-                        <input type="submit" value="Update Email">
-                       
+                                    <input type="submit" value="Update Email">
+
                                     <div class="change-password">
                                         <a class="custom-button" href="{{ route('change-password') }}">Change password</a>
                                     </div>
                                 </div>
-                       
+
                         </div>
-                        
+
                         </form>
 
                     </div>
@@ -102,8 +102,8 @@
                 reader.readAsDataURL(file);
             }
         }
-    });           
-                          
+    });
+
     $modal.on('shown.bs.modal', function() {
         cropper = new Cropper(image, {
             aspectRatio: 1,

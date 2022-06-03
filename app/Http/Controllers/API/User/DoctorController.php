@@ -75,6 +75,8 @@ class DoctorController extends Controller
             try {
 
                 if ($request->chat_id == 0) {
+
+                    
                     //insert data in chat table
                     $create_chat = new Chat;
                     $create_chat->user_id = Auth::user()->id;
@@ -84,7 +86,7 @@ class DoctorController extends Controller
                     //insert data in chatData table
                     $save_chat_data = new ChatData;
                     if (!isset($consultation[0])) {
-                        $save_chat_data->chat_data = "No Result Found.";
+                        $save_chat_data->chat_data = json_encode("No Result Found.");
                     } else {
                         $save_chat_data->chat_data = json_encode($consultation);
                     }
@@ -92,15 +94,25 @@ class DoctorController extends Controller
                     $save_chat_data->chat_id = $create_chat->id;
                     $save_chat_data->key = $request->search;
                     $save_chat_data->save();
+
+                    return response()->json([
+                        "ReturnCode" => 1,
+                        "data" => $consultation,
+                        "SearchKey" => $request->search,
+                        "chat_id" =>$create_chat->id,
+                    ], 200);
+
+                    
                 } else {
 
                     //first check chat is already exists
 
-                    $chat = Chat::where('id', $request->chat_id)->count();
+                    $chat = Chat::where('id', $request->chat_id)->where('doctor_id', $request->doctor_id)->count();
+
                     $save_chat_data = new ChatData;
                     if ($chat >= 1) {
                         if (!isset($consultation[0])) {
-                            $save_chat_data->chat_data = "No Result Found.";
+                            $save_chat_data->chat_data = json_encode("No Result Found.");
                         } else {
                             $save_chat_data->chat_data  = json_encode($consultation);
                         }
@@ -109,15 +121,18 @@ class DoctorController extends Controller
                         $save_chat_data->key = $request->search;
                         $save_chat_data->save();
                     } else {
-                        return "No chat found with chat id " . $request->chat_id;
+                        return "please check chat id or doctor id";
                     }
+
+                    return response()->json([
+                        "ReturnCode" => 1,
+                        "data" => $consultation,
+                        "SearchKey" => $request->search,
+                        
+                    ], 200);
                 }
 
-                return response()->json([
-                    "ReturnCode" => 1,
-                    "data" => $consultation,
-                    "SearchKey" => $request->search
-                ], 200);
+              
             } catch (ModelNotFoundException $e) {
                 return response()->json([
                     "ReturnCode" => 0,

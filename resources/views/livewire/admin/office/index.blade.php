@@ -53,5 +53,5 @@
         </tbody>
     </table>
     </div>
-    {{ $offices->links('pagination::bootstrap-4')}}
+    {{ $offices->links()}}
 </div>

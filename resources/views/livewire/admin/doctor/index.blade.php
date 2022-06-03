@@ -58,7 +58,7 @@
 
                 </table>
             </div>
-            {{ $doctors->links('pagination::bootstrap-4')}}
+            {{ $doctors->links()}}
 
 
         </div>

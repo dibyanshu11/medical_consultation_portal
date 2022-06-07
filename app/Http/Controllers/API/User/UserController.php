@@ -266,7 +266,7 @@ class UserController extends Controller
         $input = [
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
-            'full_name' =>$input['first_name'] .' '.$input['last_name'],
+            'full_name' => $input['first_name'] . ' ' . $input['last_name'],
             'email' => $input['email'],
             'mobile' => $input['mobile'],
             'image' => $image
@@ -360,11 +360,23 @@ class UserController extends Controller
     }
 
 
-    public function summeryListing()
+    public function summeryListing(Request $request)
     {
         try {
 
-            $doctors = Chat::where('user_id', Auth::user()->id)->with('doctor', 'user')->get();
+            $doctors = [];
+            if ($request->search != null) {
+
+
+                $searchTerm = '%' . $request->search . '%';
+                $doctors  = Chat::where('user_id', Auth::user()->id)->with('doctor')
+                    ->whereHas('doctor', function ($query) use ($searchTerm) {
+                        $query->whereRaw("concat(first_name, ' ', last_name) like '%" . $searchTerm . "%' ");
+                    })->orderBy('id', 'DESC')->get();
+            } else {
+
+                $doctors = Chat::where('user_id', Auth::user()->id)->with('doctor', 'user')->get();
+            }
 
             return response()->json([
                 "ReturnCode" => 1,

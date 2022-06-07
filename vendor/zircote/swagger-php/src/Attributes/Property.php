@@ -8,20 +8,20 @@ namespace OpenApi\Attributes;
 
 use OpenApi\Generator;
 
-#[\Attribute(\Attribute::TARGET_METHOD | \Attribute::TARGET_PROPERTY | \Attribute::TARGET_PARAMETER | \Attribute::TARGET_CLASS_CONSTANT)]
+#[\Attribute(\Attribute::TARGET_METHOD | \Attribute::TARGET_PROPERTY | \Attribute::TARGET_PARAMETER | \Attribute::TARGET_CLASS_CONSTANT | \Attribute::IS_REPEATABLE)]
 class Property extends \OpenApi\Annotations\Property
 {
     /**
-     * @param string[]                  $required
-     * @param Property[]                $properties
-     * @param int|float                 $maximum
-     * @param int|float                 $minimum
-     * @param string[]|int[]|float[]    $enum
-     * @param Schema[]                  $allOf
-     * @param Schema[]                  $anyOf
-     * @param Schema[]                  $oneOf
-     * @param array<string,string>|null $x
-     * @param Attachable[]|null         $attachables
+     * @param string[]                                  $required
+     * @param Property[]                                $properties
+     * @param int|float                                 $maximum
+     * @param int|float                                 $minimum
+     * @param string[]|int[]|float[]                    $enum
+     * @param array<Schema|\OpenApi\Annotations\Schema> $allOf
+     * @param array<Schema|\OpenApi\Annotations\Schema> $anyOf
+     * @param array<Schema|\OpenApi\Annotations\Schema> $oneOf
+     * @param array<string,mixed>|null                  $x
+     * @param Attachable[]|null                         $attachables
      */
     public function __construct(
         ?string $property = null,

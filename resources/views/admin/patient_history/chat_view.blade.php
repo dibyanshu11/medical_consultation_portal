@@ -10,7 +10,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="add-dctr">
-                            @include('layouts.includes.alerts')
+                          
                             <h4> View conversation</h4>
                             <div class="row chat_page">
                                 @foreach($conversations as $conversation)

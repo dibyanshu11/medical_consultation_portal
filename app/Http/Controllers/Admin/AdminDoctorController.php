@@ -18,10 +18,9 @@ class AdminDoctorController extends Controller
 
     public function doctorIndex(Request $request)
     {
-      
+
 
         return view('admin.add_doctor.index');
-  
     }
 
     public function  addDoctor()
@@ -31,17 +30,29 @@ class AdminDoctorController extends Controller
         return view('admin.add_doctor.create', compact('officeSelect'));
     }
 
-   
+
     public function  storeDoctor(Request $request)
     {
 
+        // dd($request->all());
         $request->validate([
 
             'offices' => 'required',
             'image' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'practice' => 'required'
+            'practice' => 'required',
+            'intro_video' =>  [
+                'required',
+                'url',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
+                    }
+                },
+            ],
+            'description' => 'required',
+
         ]);
 
         if (!empty($request->cropimage)) {
@@ -74,7 +85,10 @@ class AdminDoctorController extends Controller
         $doctor->doctor_pic = $image_name;
         $doctor->first_name = $request->first_name;
         $doctor->last_name = $request->last_name;
+        $doctor->full_name = $request->first_name . ' ' . $request->last_name;
         $doctor->practice = $practice;
+        $doctor->intro_video = $request->intro_video;
+        $doctor->description = $request->description;
         $doctor->save();
         session()->flash('success', 'Doctor Added Successfully');
         return redirect()->route('doctor-index');
@@ -91,6 +105,28 @@ class AdminDoctorController extends Controller
 
     public function  doctorUpdate(Request $request, $id)
     {
+
+        $request->validate([
+            'offices' => 'required',
+          
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'practice' => 'required',
+            'description' => 'required',
+            'intro_video' =>  [
+                'required',
+                'url',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
+                    }
+                },
+            ],
+
+            
+
+        ]);
+
         $all = $request->all();
         if (!empty($request->cropimage)) {
 
@@ -107,11 +143,11 @@ class AdminDoctorController extends Controller
             $path = public_path() . "/storage/doctor-profile/" . $image_name;
 
             file_put_contents($path, $data);
-        } 
+        }
         $office = Office::where('id', $request->offices)->first();
         $practice = implode(", ", $request->practice);
         $data = [];
-        if( !empty($image_name) ){
+        if (!empty($image_name)) {
             $data = ["doctor_pic" =>  $image_name];
         }
         $data = array_merge([
@@ -119,14 +155,16 @@ class AdminDoctorController extends Controller
             "office_name" => $office->office_name,
             "first_name" => $request['first_name'],
             "last_name" => $request['last_name'],
+            "full_name" => $request['first_name'] . ' ' . $request['last_name'],
             "practice" => $practice,
+            "intro_video" => $request['intro_video'],
+            "description" => $request['description'],
         ], $data);
 
         $updateDoctor = Doctor::where("id", $id)
-        ->update($data);
-    
+            ->update($data);
+
         return redirect()->route('doctor-index')->with('success', 'Doctor Updated Successfully.');
-     
     }
 
 
@@ -169,6 +207,4 @@ class AdminDoctorController extends Controller
 
         return response()->json(['success' => 'success']);
     }
-
-  
 }

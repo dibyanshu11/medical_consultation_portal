@@ -1,5 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.chatmsg {
+    padding: 15px 20px;
+    background: #040404 !important;
+    color: #fff;
+    border-radius: 0px 10px 10px 15px;
+}
 
+.chatreponse {
+    justify-content: end;
+}.msgrespone {
+    background: #e4e4e4;
+    padding: 15px 20px;
+    margin-top: 10px;
+    border-radius: 6px 8px 15px 8px;
+}
+.chat_page {
+    background: #fff;
+    filter: drop-shadow(0 0.1rem 0.2rem rgba(0, 0, 0, 0.1));
+    padding: 30px 40px;
+    border-radius: 5px;
+}
+.media-body.bordervideo {
+    padding: 10px 10px;
+    border: 1px solid #040404;
+    border-radius: 8px;
+    max-width: 580px;
+}
+.fullchat{
+    margin-top: 10px;
+    background: #040404 !important;
+    border-radius: 0px 10px 10px 15px;
+    padding: 15px 20px;
+    color:#fff;
+}
+
+.borderchat{
+    margin:10px 0px;
+    padding: 15px 15px;
+    border:1px solid #040404;
+    border-radius: 0px 10px 10px 15px;
+}
 .menu-bar {
     display: flex;
 }
@@ -72,11 +112,16 @@ ul.nav-menu {
 .nav-link svg {
     fill: #67686B;
 }
-
+.row.chat_page {
+    margin-top: 30px;
+}
+.active svg {
+    fill: #139980 !important;
+}
 .menu-bar .nav-link {
     color: #67686B;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 45px;
     font-family: 'Work Sans';
     -webkit-user-select: none;
@@ -217,7 +262,7 @@ p.sub-titel {
 
 a.custom-button {
     background: #12997f;
-    padding: 10px 16px;
+    padding: 14px 20px;
     border-radius: 11px;
     font-size: 13px;
     text-align: center;
@@ -226,7 +271,9 @@ a.custom-button {
     font-family: 'work sans';
     text-decoration: none;
 }
-
+a.delete-button {
+    margin-left: 15px;
+}
 .add-btn {
     display: flex;
     justify-content: end;
@@ -271,13 +318,20 @@ input[type="submit"] {
     position: relative;
     left: 26%;
 }
-
+.form-control:focus {
+ 
+    box-shadow:none !important;
+}
+a#btnOpenFileDialog {
+    color: #fff;
+}
 .tab-data label {
     font-size: 16px;
     color: #555557;
-    font-weight: 600;
+    font-weight: 400;
     font-family: "Work Sans";
     line-height: 35px;
+    margin-bottom: 3px;
 }
 
 .video-upload {
@@ -485,21 +539,38 @@ td.tdicon {
 td {
     padding: 12px !important;
 }
+span.help-block {
+    color:red;
+}
 
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    text-transform: capitalize;
+}
 tr td {
     font-size: 17px;
     color: #626262;
     font-weight: 500;
     font-family: "Work Sans";
 }
-
+input[type="text"]::placeholder{
+width:22rem !important;
+}
+input.updatepass {
+    margin-left: 17px;
+}
+a.btn.btn-success.backbtn {
+    padding: 10px 38px;
+    background:#12997f !important;
+}
 .Patient-History-tb a {
     color: #12997fed;
     font-size: 16px;
     text-decoration: none;
-    font-weight: 900;
+    font-weight: 600;
 }
-
 .top-search-bar {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -883,7 +954,7 @@ a.card-link {
 }
 
 input[type="submit"] {
-    margin-right: 24%;
+    margin-top: 10px;
 }
 
 .table-outter {
@@ -1729,11 +1800,12 @@ input::-webkit-inner-spin-button {
 
 
 .change-password {
-
     display: flex;
     justify-content: end;
 }
-
+.change-password a {
+    text-transform: capitalize;
+}
 .bootstrap-tagsinput {
     box-shadow: none !important;
 }
@@ -1741,4 +1813,34 @@ input::-webkit-inner-spin-button {
 td.dr-img {
     display: flex;
     align-items: center;
+}
+
+svg {
+    width:20px;
+}
+
+#intro_video {
+    width: 100%;
+    background-color: #f6f6f6;
+    height: 48px;
+    border:none;
+}
+.form-group {
+    margin-bottom: 0rem !important;
+}
+.adddoctor input[type="submit"] {
+    margin-left:0px !important;
+}
+span.select2-selection.select2-selection--multiple {
+    min-height: 48px;
+}
+#doctor_description{
+    width: 100%;
+    min-height: 120px;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    border: none;
+    outline: none;
+    margin-bottom: 25px;
+    padding: 10px;
 }

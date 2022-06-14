@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'first_name',
         'last_name',
+        'full_name',
         'email',
         'mobile',
         'image',
@@ -62,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getImageAttribute($value) {
         
-        return env('APP_URL').'/storage/user-profile/'.$value;
+        return env('APP_URL').'/public/storage/user-profile/'.$value;
     }
 
 

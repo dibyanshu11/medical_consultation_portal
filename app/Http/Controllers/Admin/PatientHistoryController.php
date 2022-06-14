@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Chat;
-use App\Models\Doctor;
-use App\Models\User;
+
 
 class PatientHistoryController extends Controller
 {
@@ -14,7 +13,7 @@ class PatientHistoryController extends Controller
     {
         $this->middleware('auth');
     }
-   
+
     public function patientIndex()
     {
         return view('admin.patient_history.index');
@@ -22,8 +21,11 @@ class PatientHistoryController extends Controller
 
     public function chatView($id)
     {
-        $chats=Chat::with('doctor','user')->find($id);
-        return view('admin.patient_history.chat_view', compact('chats'));
-    }
 
+        $conversations = Chat::where('id', $id)->with('chat_data', 'user', 'doctor')->get();
+
+        //  dd($conversations);
+
+        return view('admin.patient_history.chat_view', compact('conversations'));
+    }
 }

@@ -23,8 +23,7 @@ class Index extends Component
          
             'doctors' => Doctor::whereIn('office_id', $office_details)
                 ->where('office_name', 'like', $searchTerm)
-                ->orWhere('first_name', 'like', $searchTerm)
-                ->orWhere('last_name', 'like', $searchTerm)
+                ->orWhere('full_name', 'like', $searchTerm)
                 ->orWhere('practice', 'like', $searchTerm)
                 ->orderBy('id', 'DESC')->paginate(10),
         ]);

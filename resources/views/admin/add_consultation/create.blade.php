@@ -18,7 +18,7 @@
 
                                 @include('admin.add_consultation.form')
 
-                                <input type="submit" value="Submit">
+                                <input type="submit" value="Submit" id="submit">
                                 {!! Form::close() !!}
                             </div>
                         </div>

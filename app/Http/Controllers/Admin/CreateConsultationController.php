@@ -23,14 +23,12 @@ class CreateConsultationController extends Controller
 
     public function doctorList(Request $request)
     {
-           
-        $doctors = Doctor::where('office_id',$request->id)->get();
-             return response()->json([
+
+        $doctors = Doctor::where('office_id', $request->id)->get();
+        return response()->json([
             "ReturnCode" => 0,
             "data" =>  $doctors,
         ], 200);
-
-     
     }
 
 
@@ -38,7 +36,7 @@ class CreateConsultationController extends Controller
     public function addconsultation()
     {
         $offices = Office::where('user_id', auth()->user()->id)->get()->sortBy('office_name', SORT_NATURAL | SORT_FLAG_CASE)->pluck('office_name', 'id');
-       
+
 
         return view('admin.add_consultation.create', compact('offices'));
     }
@@ -46,18 +44,37 @@ class CreateConsultationController extends Controller
 
     public function storeConsultation(Request $request)
     {
+        //  dd($request->all());
 
-        
-        $request->validate([
+        $request->validate(
+            [
 
-            'offices' => 'required',
-            'response_name' => 'required',
-            'keywords' => 'required',
-            'questions' => 'required',
-            'phrases' => 'required',
-            'video_link' => 'required',
-            'video_response' => 'required',
-        ]);
+                'offices' => 'required',
+                'response_name' => 'required',
+                'keywords' => 'required',
+                'questions' => 'required',
+                'phrases' => 'required',
+                'video_link' =>  [
+                    'required',
+                    'url',
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
+                        }
+                    },
+                ],
+                'video_response' => 'required',
+
+
+            ],
+            [
+                 'offices.required' => 'Please Select Office',
+                'video_link.required' => 'Please add youtube link',
+
+            ]
+        );
+
+
 
         $consultation = new Consultation();
         $consultation->office_id = $request->offices;
@@ -74,22 +91,49 @@ class CreateConsultationController extends Controller
 
     public function  consultaionEdit($id)
     {
-        
+
         $consultations = Consultation::with('doctor')->with('office')->find($id);
-       
-        $selected_doctor=Doctor::find( $consultations->doctor_id);
-         
-        $doctors_list=Doctor::where('office_id',$consultations->office->id)->get();
-  
+
+        $selected_doctor = Doctor::find($consultations->doctor_id);
+
+        $doctors_list = Doctor::where('office_id', $consultations->office->id)->get();
+
         $offices = Office::where('user_id', auth()->user()->id)->get()->sortBy('office_name', SORT_NATURAL | SORT_FLAG_CASE)->pluck('office_name', 'id');
-       
-        return view('admin.add_consultation.update', compact('consultations', 'offices' ,'selected_doctor','doctors_list'));
+
+        return view('admin.add_consultation.update', compact('consultations', 'offices', 'selected_doctor', 'doctors_list'));
     }
 
     public function  doctorUpdate(Request $request, $id)
     {
-       
-       $updateDoctor = Consultation::where("id", $id)
+        $request->validate(
+            [
+
+                'offices' => 'required',
+                'response_name' => 'required',
+                'keywords' => 'required',
+                'questions' => 'required',
+                'phrases' => 'required',
+                'video_link' =>  [
+                    'required',
+                    'url',
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
+                        }
+                    },
+                ],
+                'video_response' => 'required',
+
+
+            ],
+            [
+                'offices.required' => 'Please Select Office',
+                 'video_link.required' => 'Please add youtube link',
+
+            ]
+        );
+
+        $updateDoctor = Consultation::where("id", $id)
             ->update([
                 "office_id" => $request['offices'],
                 "doctor_id" => $request['doctor_id'],
@@ -111,6 +155,5 @@ class CreateConsultationController extends Controller
         $deleteConsultation = Consultation::findOrFail($id);
         $deleteConsultation->delete();
         return response()->json(['status' => 'Consultation Deleted Successfully']);
-       
     }
 }

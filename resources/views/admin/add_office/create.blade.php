@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+<div class="container tab-body">
     <div row>
         <div class="d-flex align-items-start tab-main">
 
@@ -11,7 +11,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                       
+                        <div class="container">
                             <div class="add-dctr">
 
                                 {!! Form::open(['route'=>'store-office', 'method'=>'post']) !!}
@@ -23,13 +23,13 @@
 
 
                             </div>
-                    
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
 @endsection

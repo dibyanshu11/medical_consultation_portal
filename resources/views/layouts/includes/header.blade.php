@@ -47,11 +47,15 @@
                 </li>
             </div>
 
-            <div class="menu_toogle">
-        <div class="toggle">
-            <img src="{{asset('images/menu.png')}}">
-        </div>
-    </div>
+            <!--<li class="massage"><img src="{{asset('/images/massage.png')}}"></li>-->
+            <!--<li class="notification">-->
+            <!--    <a href="#"><img src="{{(asset('/images/notification.png'))}}"></a>-->
+
+            <!--    <span class="notification-dropdown">-->
+            <!--        <p>abc</p>-->
+            <!--        <p>abc</p>-->
+            <!--    </span>-->
+            <!--</li>-->
 
             @endguest
         </ul>

@@ -4,16 +4,17 @@
 @section('content')
 
 
-<div class="container  tab-body">
-    <div row>
+<div class="tab-body">
+    <div class="row">
         <div class="d-flex align-items-start tab-main">
 
-            <div class="tab-data col-md-12">
+            <div class="tab-data">
                 <div class="tab-content" id="v-pills-tabContent">
                     <!-- fist tab -->
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class="container">
 
+
+                            
                             <form action="{{ route('update-profile') }}" method="POST">
                                 @csrf
                                 <div class="row">
@@ -44,19 +45,17 @@
                                     <input type="email" id="Primary" name="email" value="{{$admin->email}}" autocomplete="email">
                                     @error('email') <span ...>{{ $message }}</span> @enderror
                                 </div>
-                                <div class="email-btn">
-                        <input type="submit" value="Update Email">
-                       
+                                <div class="col-md-12">
                                     <div class="change-password">
-                                        <a class="custom-button" href="{{ route('change-password') }}">Change password</a>
+                                        <a class="custom-button" href="{{ route('change-password') }}">Click to change password</a>
                                     </div>
                                 </div>
-                       
+
                         </div>
-                        
+                        <input type="submit" value="Update Email">
                         </form>
 
-                    </div>
+
                 </div>
 
                 <!-- fist tab end -->
@@ -69,7 +68,6 @@
     function openfileDialog() {
         $("#file").click();
     }
-
 
     var $modal = $('#modal');
     var image = document.getElementById('image');
@@ -102,13 +100,13 @@
                 reader.readAsDataURL(file);
             }
         }
-    });           
-                          
+    });
+
     $modal.on('shown.bs.modal', function() {
         cropper = new Cropper(image, {
             aspectRatio: 1,
             viewMode: 4,
-            preview: '.preview',
+            preview: '.preview'
         });
     }).on('hidden.bs.modal', function() {
         cropper.destroy();

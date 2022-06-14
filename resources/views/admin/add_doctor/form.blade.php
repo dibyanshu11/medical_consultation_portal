@@ -1,4 +1,4 @@
-<div class="doctor-container">
+<div class="doctor-container adddoctor">
 
     @if(@$doctors->doctor_pic)
 
@@ -29,7 +29,6 @@
 
     <div class="row">
         <div class="col-md-6">
-
         </div>
 
         <div class="Upload-img ">
@@ -70,19 +69,17 @@
             </br>
         </div>
 
-
-
     </div>
     <div class="row">
 
-        <div class="form-group col-md-6">
+        <div class="form-group">
             {!! Form::label('first_name','First Name', ['class' => 'control-label']) !!}
             {!! Form::text('first_name', null, ['id'=>'fname','class' => 'form-control' . ($errors->has('first_name') ? ' is-invalid' : '') ]) !!}
             {!! $errors->first('first_name', '<span class="help-block">:message</span>') !!}
         </div>
 
 
-        <div class="form-group col-md-6">
+        <div class="form-group">
             {!! Form::label('last_name','Last Name', ['class' => 'control-label']) !!}
             {!! Form::text('last_name', null, ['id'=>'lname','class' => 'form-control' . ($errors->has('last_name') ? ' is-invalid' : '') ]) !!}
             {!! $errors->first('last_name', '<span class="help-block">:message</span>') !!}
@@ -109,6 +106,20 @@
         </div>
     </div>
 
+
+  <div class="form-group">
+        {!! Form::label('intro_video','Introduction Video', ['class' => 'control-label']) !!}
+        {!! Form::text('intro_video', null, ['id'=>'intro_video','class' => 'form-control' . ($errors->has('intro_video') ? ' is-invalid' : '') ]) !!}
+        {!! $errors->first('intro_video', '<span class="help-block">:message</span>') !!}
+    </div>
+
+
+    <div class="form-group">
+        {!! Form::label('description','Description', ['class' => 'control-label']) !!}
+        {!! Form::textarea('description', null, ['id'=>'doctor_description','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : '') ]) !!}
+        {!! $errors->first('description', '<span class="help-block">:message</span>') !!}
+
+    </div>
 
 </div>
 <link href="{{ asset('css/multi.css') }}" rel="stylesheet">

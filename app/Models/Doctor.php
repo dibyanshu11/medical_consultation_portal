@@ -13,14 +13,17 @@ class Doctor extends Model
         'office_name',
         'first_name',
         'last_name',
+        'full_name',
         'doctor_pic',
         'practice',
+        'description',
+        'intro_video',
 
     ];
 
     public function getDoctorPicAttribute($value) {
         
-        return env('APP_URL').'/storage/doctor-profile/'.$value;
+        return env('APP_URL').'/public/storage/doctor-profile/'.$value;
     }
 
 
@@ -30,8 +33,8 @@ class Doctor extends Model
         return $this->belongsTo(Office::class);
     }
 
-    // public function consultation()
-    // {
-    //     return $this->hasMany(Consultation::class);
-    // }
+    public function consultation()
+    {
+        return $this->hasMany(Consultation::class);
+    }
 }

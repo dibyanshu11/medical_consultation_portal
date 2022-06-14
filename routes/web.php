@@ -79,7 +79,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('consultation/delete/{id}', 'deleteConsultation')->name('consultation-delete');
     });
 
-    //patient-history
+  //patient-history
     Route::controller(PatientHistoryController::class)->group(function () {
         Route::get('patient-index', 'patientIndex')->name('patient-index');
         Route::get('chat-view/{id}', 'chatView')->name('chat-view');

@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chat;
 use App\Models\Doctor;
+use App\Models\ChatData;
+use App\Mail\RegisterOtp;
+use App\Mail\PasswordResetOtp;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use DB;
 use Mail;
-use App\Mail\RegisterOtp;
-use App\Mail\PasswordResetOtp;
 
 class UserController extends Controller
 {
@@ -40,9 +41,11 @@ class UserController extends Controller
         try {
 
             $input = $request->all();
+            $input['full_name'] = $request->first_name . ' ' . $request->last_name;
             $input['device_type'] = $request->device_type;
             $input['device_token'] = $request->device_type;
             $input['password'] = bcrypt($input['password']);
+
             $user = User::create($input);
             $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -263,6 +266,7 @@ class UserController extends Controller
         $input = [
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
+            'full_name' => $input['first_name'] . ' ' . $input['last_name'],
             'email' => $input['email'],
             'mobile' => $input['mobile'],
             'image' => $image
@@ -319,8 +323,8 @@ class UserController extends Controller
             ], 400);
         }
     }
-    
-      public function doctorUserChat(Request $request)
+
+    public function doctorUserChat(Request $request)
     {
         $isDoctorExist = Doctor::where('id', '=', $request->doctor_id)->count();
         if ($isDoctorExist == 0) {
@@ -353,5 +357,55 @@ class UserController extends Controller
         return [
             'message' => 'You have successfully logged out and the token was successfully deleted'
         ];
+    }
+
+
+    public function summeryListing(Request $request)
+    {
+        try {
+
+            $doctors = [];
+            if ($request->search != null) {
+
+
+                $searchTerm = '%' . $request->search . '%';
+                $doctors  = Chat::where('user_id', Auth::user()->id)->with('doctor')
+                    ->whereHas('doctor', function ($query) use ($searchTerm) {
+                        $query->whereRaw("concat(first_name, ' ', last_name) like '%" . $searchTerm . "%' ");
+                    })->orderBy('id', 'DESC')->get();
+            } else {
+
+                $doctors = Chat::where('user_id', Auth::user()->id)->with('doctor', 'user')->get();
+            }
+
+            return response()->json([
+                "ReturnCode" => 1,
+                "ReturnMessage" => "Chat summery listing.",
+                "data" => $doctors
+            ], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                "ReturnCode" => 0,
+                "error" => $e,
+            ], 400);
+        }
+    }
+
+    public function viewSummery(Request $request)
+    {
+        try {
+            $view_chat = Chat::where('id', $request->chat_id)->with('chat_data', 'user', 'doctor')->get();
+
+            return response()->json([
+                "ReturnCode" => 1,
+                "ReturnMessage" => "view chat Summery.",
+                "data" => $view_chat
+            ], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                "ReturnCode" => 0,
+                "error" => $e,
+            ], 400);
+        }
     }
 }

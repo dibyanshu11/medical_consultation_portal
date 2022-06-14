@@ -10,39 +10,38 @@
         </div>
     </div>
     <div class="table-outter">
-    <table class="table  table-borderless Patient-History-tb table-sm ">
-        <thead>
-            <tr>
-                <th>Sr</th>
-                <th>Patient Name</th>
-                <th>Doctor Name</th>
-                <th width="24%">Date of Consultation</th>
-                <th width="26%">View Consultation</th>
-                <!--<th>Notes</th>-->
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($chats as $i => $chat)
-            <tr>
-                <input type="hidden" id="select_delete" value="{{$chat->id}}">
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $chat->user->first_name }} {{ $chat->user->last_name }}</td>
-                <td>{{ $chat->doctor->first_name }} {{ $chat->doctor->last_name }}</td>
-                <td>{{ $chat->created_at->format('M d, Y')}}</td>
-               
-                <td>
-                    <div class="btn-icon-list">
-                        <a href="{{ route('chat-view',$chat->id) }}" class="">
-                        View conversation
-                        </a>
-                      
-                    </div>
-                </td>
-            </tr>
-            @endforeach
+        <table class="table  table-borderless Patient-History-tb table-sm ">
+            <thead>
+                <tr>
+                    <th>Sr</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th width="24%">Date of Consultation</th>
+                    <th width="26%">View Consultation</th>
+                    <!--<th>Notes</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($chats as $i => $chat)
+                <tr>
+                    <input type="hidden" id="select_delete" value="{{$chat->id}}">
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $chat->user->full_name ?? $chat->user->first_name  }}  </td>
+                    <td>{{ @$chat->doctor->full_name }}</td>
+                    <td>{{ $chat->created_at->format('M d, Y')}}</td>
 
-        </tbody>
-    </table>
+                    <td>
+                        <div class="btn-icon-list">
+                            <a href="{{ route('chat-view',$chat->id) }}" class="">
+                                View conversation
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
     </div>
-    {{ $chats->links('pagination::bootstrap-4')}}
+    {{ $chats->links()}}
 </div>

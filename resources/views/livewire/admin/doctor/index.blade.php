@@ -69,7 +69,7 @@
                     </tr>
                     @endforeach
 
-                </tbody>
+                    </tbody>
 
             </table>
             {{ $doctors->links()}}

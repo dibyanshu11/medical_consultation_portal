@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API\User;
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

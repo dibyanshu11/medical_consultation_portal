@@ -20,7 +20,7 @@ use App\Http\Controllers\API\User\DoctorController;
 
 
 // Route::get('/otp-verify', function() {
-   
+
 //     return "helloooi sir";
 // });
 
@@ -34,13 +34,13 @@ Route::post('/change-password', [UserController::class, 'changePassword']);
 
 //Protecting Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-     
+
     //user
     Route::get('/user-details', [UserController::class, 'profileDetails']);
     Route::post('/profile-update', [UserController::class, 'profileUpdate']);
     Route::post('/change-user-password', [UserController::class, 'changeUserPassword']);
-    
-     //Doctor-user-chat
+
+    //Doctor-user-chat
 
     Route::post('/doctor-user-chat', [UserController::class, 'doctorUserChat']);
     
@@ -49,6 +49,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/summery_list', [UserController::class, 'summeryListing']);
     
     
+     //particular chat summery
+    Route::post('/view_summery', [UserController::class, 'viewSummery']);
+
+    //summery listing
+    Route::post('/summery_list', [UserController::class, 'summeryListing']);
+
      //particular chat summery
     Route::post('/view_summery', [UserController::class, 'viewSummery']);
 
@@ -62,5 +68,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // API route for logout user
     Route::post('/logout', [UserController::class, 'logout']);
 });
-
-

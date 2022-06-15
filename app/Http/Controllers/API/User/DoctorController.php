@@ -21,18 +21,18 @@ class DoctorController extends Controller
         $doctors  = [];
 
         if (isset($request->search) && !empty($request->search) && isset($request->practice) && !empty($request->practice)) {
-            $doctors = Doctor::whereRaw("concat(first_name, ' ', last_name) like '%" . $request->search . "%' ")->whereRaw("concat(practice) like '%" . $request->practice . "%' ");
+            $doctors = Doctor::where("status","active")->whereRaw("concat(first_name, ' ', last_name) like '%" . $request->search . "%' ")->whereRaw("concat(practice) like '%" . $request->practice . "%' ");
         }
 
         if ($request->search) {
-            $doctors  = Doctor::whereRaw("concat(first_name, ' ', last_name) like '%" . $request->search . "%' ");
+            $doctors  = Doctor::where("status","active")->whereRaw("concat(first_name, ' ', last_name) like '%" . $request->search . "%' ");
         }
 
         if ($request->practice) {
             if (empty($doctors)) {
-                $doctors = Doctor::whereRaw("concat(practice) like '%" . $request->practice . "%' ");
+                $doctors = Doctor::where("status","active")->whereRaw("concat(practice) like '%" . $request->practice . "%' ");
             } else {
-                $doctors = $doctors->whereRaw("concat(practice) like '%" . $request->practice . "%' ");
+                $doctors = $doctors->where("status","active")->whereRaw("concat(practice) like '%" . $request->practice . "%' ");
             }
         }
 

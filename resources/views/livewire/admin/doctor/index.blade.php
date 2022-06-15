@@ -2,7 +2,7 @@
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
         <div class="container">
-          
+
 
             <div class="row top-search-bar">
                 <h4>Doctor List
@@ -28,12 +28,13 @@
                         <th width="24%">Practice</th>
                         <th>Created at</th>
                         <th>Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($doctors as $i => $doctor)
                     <tr>
-                    <input type="hidden" id="select_delete" value="{{$doctor->id}}">
+                        <input type="hidden" id="select_delete" value="{{$doctor->id}}">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $doctor->office_name }}</td>
                         <td><img class="user-prf-img" alt="Profile" src="{{ $doctor->doctor_pic }}" />{{$doctor->first_name}} {{$doctor->last_name}}</td>
@@ -45,11 +46,24 @@
                                 <a href="{{ route('doctor-edit',$doctor->id) }}" class="">
                                     <img src="{{asset('images/pen 4.png')}}">
                                 </a>
-                                <a class="delete delete-button">
-                                    <img src="{{asset('images/delete-24.ico')}}">
+
+
+                                @if($doctor->status=="active")
+                                <a class="delete delete-button deactive_status">
+                                    Deactive
+                                    <!-- <img src="{{asset('images/delete-24.ico')}}"> -->
                                 </a>
+                                @else
+                                <a class="active_status delete-button ">
+                                    Active
+                                    <!-- <img src="{{asset('images/delete-24.ico')}}"> -->
+                                </a>
+                                @endif
+
+
                             </div>
                         </td>
+
 
 
                     </tr>

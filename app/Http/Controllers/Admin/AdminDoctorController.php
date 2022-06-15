@@ -35,25 +35,29 @@ class AdminDoctorController extends Controller
     {
 
         // dd($request->all());
-        $request->validate([
+        $request->validate(
+            [
 
-            'offices' => 'required',
-            'image' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'practice' => 'required',
-            'intro_video' =>  [
-                'required',
-                'url',
-                function ($attribute, $requesturl, $failed) {
-                    if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
-                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
-                    }
-                },
+                'offices' => 'required',
+                'image' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'practice' => 'required',
+                'intro_video' =>  [
+                    'required',
+
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
+                        }
+                    },
+                ],
+                'description' => 'required',
             ],
-            'description' => 'required',
-
-        ]);
+            [
+                'intro_video.required' => 'Please add youtube link',
+            ]
+        );
 
         if (!empty($request->cropimage)) {
 
@@ -106,26 +110,29 @@ class AdminDoctorController extends Controller
     public function  doctorUpdate(Request $request, $id)
     {
 
-        $request->validate([
-            'offices' => 'required',
-          
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'practice' => 'required',
-            'description' => 'required',
-            'intro_video' =>  [
-                'required',
-                'url',
-                function ($attribute, $requesturl, $failed) {
-                    if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
-                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
-                    }
-                },
+        $request->validate(
+            [
+                'offices' => 'required',
+
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'practice' => 'required',
+                'description' => 'required',
+                'intro_video' =>  [
+                    'required',
+
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
+                        }
+                    },
+                ],
+                'description' => 'required',
             ],
-
-            
-
-        ]);
+            [
+                'intro_video.required' => 'Please add youtube link',
+            ]
+        );
 
         $all = $request->all();
         if (!empty($request->cropimage)) {
@@ -168,11 +175,21 @@ class AdminDoctorController extends Controller
     }
 
 
-    public function  deleteDotor($id)
+    public function  deactiveDotor($id)
     {
-        $deleteOffice = Doctor::findOrFail($id);
-        $deleteOffice->delete();
-        return response()->json(['status' => 'Doctor Deleted Successfully']);
+
+        $deleteOffice = Doctor::where("id", $id)->update(["status" => "deactive"]);
+
+        return response()->json(['status' => 'Doctor Deactived Successfully']);
+        return view('admin.add_doctor.index');
+    }
+
+    public function  activeDotor($id)
+    {
+
+        $deleteOffice = Doctor::where("id", $id)->update(["status" => "active"]);
+
+        return response()->json(['status' => 'Doctor Actived Successfully']);
         return view('admin.add_doctor.index');
     }
 

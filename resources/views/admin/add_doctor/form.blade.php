@@ -107,7 +107,7 @@
     </div>
 
 
-  <div class="form-group">
+    <div class="form-group">
         {!! Form::label('intro_video','Introduction Video', ['class' => 'control-label']) !!}
         {!! Form::text('intro_video', null, ['id'=>'intro_video','class' => 'form-control' . ($errors->has('intro_video') ? ' is-invalid' : '') ]) !!}
         {!! $errors->first('intro_video', '<span class="help-block">:message</span>') !!}
@@ -174,7 +174,7 @@
     $modal.on('shown.bs.modal', function() {
         cropper = new Cropper(image, {
             aspectRatio: 1,
-            viewMode: 4,
+            viewMode: 2,
             preview: '.preview'
         });
     }).on('hidden.bs.modal', function() {
@@ -211,22 +211,6 @@
         })
     });
 
-    // var input = document.getElementById('file');
-    // var infoArea = document.getElementById('file-upload-filename');
-
-    // input.addEventListener('change', showFileName);
-
-    // function showFileName(event) {
-
-    //     // the change event gives us the input it occurred in 
-    //     var input = event.srcElement;
-
-    //     // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
-    //     var fileName = input.files[0].name;
-
-    //     // use fileName however fits your app best, i.e. add it into a div
-    //     infoArea.textContent = fileName;
-    // }
 
 
 

@@ -1844,3 +1844,10 @@ span.select2-selection.select2-selection--multiple {
     margin-bottom: 25px;
     padding: 10px;
 }
+
+a.active_status{
+    color: #12997f !important;
+}
+a.deactive_status{
+color:red !important;
+}

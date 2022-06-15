@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\SupportController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -62,7 +62,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('store-doctor', 'storeDoctor')->name('store-dotor');
         Route::get('doctor/{id}', 'doctorEdit')->name('doctor-edit');
         Route::patch('doctor-update/{id}', 'doctorUpdate')->name('doctor-update');
-        Route::delete('doctor/delete/{id}', 'deleteDotor')->name('doctor-delete');
+        Route::post('doctor/deactive/{id}', 'deactiveDotor')->name('doctor-deactive');
+        Route::post('doctor/active/{id}', 'activeDotor')->name('doctor-active');
         Route::post('/update-doctor-pic', 'uploadDoctorPhoto');
     });
 

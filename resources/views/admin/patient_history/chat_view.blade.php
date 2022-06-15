@@ -98,7 +98,7 @@
 
                                         @else
                                         <div class="col-lg-5 msgrespone">
-                                            <span class="result" style="font-size: 22px;font-weight: 700;">Result : Data not found</span>
+                                            <span class="result" style="font-size: 18px;">Sorry, but nothing matched. Please consider trying different, fewer, or more general keywords</span>
                                         </div>
                                         @endif
                                     </div>

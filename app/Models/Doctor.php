@@ -16,6 +16,8 @@ class Doctor extends Model
         'full_name',
         'doctor_pic',
         'practice',
+        'description',
+        'intro_video',
 
     ];
 
@@ -31,8 +33,8 @@ class Doctor extends Model
         return $this->belongsTo(Office::class);
     }
 
-    // public function consultation()
-    // {
-    //     return $this->hasMany(Consultation::class);
-    // }
+    public function consultation()
+    {
+        return $this->hasMany(Consultation::class);
+    }
 }

@@ -3,25 +3,23 @@
 
         <h4>Offices</h4>
 
-       
-        <div class="col-md-5">
-            <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
-        </div>
         <div class="col-md-7">
             <div class="add-btn">
                 <a href="{{ route('create-office') }}" class="custom-button">Add Office</a>
             </div>
         </div>
+        <div class="col-md-5">
+            <input type="text" placeholder="Search" id="myCustomSearchBox" name="Search" class="Search-bar" wire:model="searchTerm">
+        </div>
 
     </div>
-    <div class="table-outter">
     <table class="table  table-borderless Patient-History-tb table-sm datatable data-table">
         <thead>
             <tr>
 
                 <th>Sr.</th>
                 <th>Name</th>
-                <th width="35%">Address</th>
+                <th>Address</th>
                 <th>Created At</th>
                 <th>Action</th>
             </tr>
@@ -52,6 +50,5 @@
 
         </tbody>
     </table>
-    </div>
     {{ $offices->links()}}
 </div>

@@ -3,11 +3,11 @@
 @section('content')
 
 
-<div class="container tab-body">
-    <div row>
+<div class="tab-body">
+    <div class="row">
         <div class="d-flex align-items-start tab-main">
 
-            <div class="tab-data col-md-12">
+            <div class="tab-data">
                 <div class="tab-content" id="v-pills-tabContent">
                     @livewire('admin.consultation.index')
                 </div>

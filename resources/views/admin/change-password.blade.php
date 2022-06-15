@@ -3,8 +3,8 @@
 @section('content')
 
 
-<div class="container tab-body">
-    <div row>
+<div class="ab-body">
+    <div class="row">
         <div class="d-flex align-items-start tab-main">
           
             <div class="tab-data col-md-12">
@@ -12,9 +12,9 @@
                     <!-- fist tab -->
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="add-dctr">
-                            <div class="container">
+                            <!--<div class="container">-->
 
-                          
+                                @include('layouts.includes.alerts')
                                 <form action="{{ route('update-password') }}" method="POST">
                                     @csrf
 
@@ -35,10 +35,10 @@
                                         @error('confirm_password') <span ...>{{ $message }}</span> @enderror
                                     </div>
 
-                                    <input type="submit" value="Update Password">
+                                    <input type="submit" value="Update Password" class="updatepass">
                                 </form>
-                            </div>
-                        </div>
+                          
+                        <!--</div>-->
                     </div>
 
                     <!-- fist tab end -->

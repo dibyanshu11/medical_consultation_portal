@@ -22,6 +22,7 @@
                     <option value="{{@$doctors->id}}" {{@$selected_doctor->id == @$doctors->id  ? 'selected' : ''}}>{{@$doctors->first_name}} {{@$doctors->last_name}} ({{@$doctors->practice}} )</option>
                     @endforeach
                 </select>
+                <span id="office_id"></span>
 
             </div>
         </div>
@@ -33,11 +34,13 @@
                     {!! Form::select('offices', $offices , null, ['placeholder' => 'Select Office', 'id'=>'select-option','class' => 'form-control real-file' . ($errors->has('offices') ? ' is-invalid' : '')]) !!}
                     {!! $errors->first('offices', '<span class="help-block">:message</span>') !!}
                 </div>
+                <span id="office_id"></span>
             </div>
 
             <div class="col-md-6 doctor-list">
 
             </div>
+
         </div>
         @endif
 
@@ -98,7 +101,7 @@
     <div class="row">
         <div class="col-md-12">
             <label for="response">Create Video Response</label><br>
-            {!! Form::label('video_response','Video Response', ['class' => 'control-label']) !!}
+            {!! Form::label('video_response','Response Text', ['class' => 'control-label']) !!}
             {!! Form::textarea('video_response', null, ['id'=>'video_response','class' => 'form-control response' . ($errors->has('video_response') ? ' is-invalid' : '') ]) !!}
             {!! $errors->first('video_response', '<span class="help-block">:message</span>') !!}
 
@@ -193,6 +196,7 @@
 
                     });
                     html += ' </select>';
+                    html += '<span id="select_doctor"></span>';
                     html += '</div>';
                     html += '</div>';
                     $(".doctor-list").html(html);
@@ -206,13 +210,12 @@
         });
 
 
+
+
+
         // for update
         $(".select-option").change(function() {
 
-
-            // alert('heloo sir');
-
-            // alert($(this).val());
             let office_id = $(this).val();
             $.ajax({
                 type: 'post',
@@ -229,7 +232,7 @@
                     var html = '';
                     html += '<option>Select Doctor</option>';
                     $(doctors).each((index, element) => {
-                        console.log(element);
+                        // console.log(element);
 
                         html += '<option value="' + element.id + '"> ' + element.first_name + ' ' + element.last_name + ' ' + '(' + ' ' + element.practice + '   ' + ')' + '</option>';
 
@@ -239,10 +242,41 @@
                     $(".selected-doctor").html(html);
                 },
                 error: function(res) {
-                    console.log('error', res);
+                    // console.log('error', res);
                     // $('#message').text('Error!');
                     // $('.dvLoading').hide();
                 }
+            });
+        });
+
+        $(function() {
+            $("#submit").click(function(event) {
+
+                var office = $("#select-option").val();
+
+                if (office != '') {
+                    // alert("office not empty")
+                    var doctor = $("#select-doctor").val();
+
+                    // alert(doctor);
+                    if (doctor == null) {
+                        // alert("doctor empty")
+                        $("#select_doctor").html('<p>Please select doctor.</p>');
+                        $("#office_id").remove();
+                        window.location = "#select-doctor";
+                        event.preventDefault();
+                    }
+                    // alert("doctor not empty")
+
+                } else {
+                    // alert("office empty")
+
+                    $("#office_id").html('<p>Please select office.</p>');
+                    window.location = "#select-option";
+                    event.preventDefault();
+
+                }
+              
             });
         });
 

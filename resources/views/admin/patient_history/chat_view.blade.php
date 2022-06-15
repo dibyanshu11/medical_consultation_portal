@@ -10,24 +10,38 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="add-dctr">
-                          
+                            @foreach($conversations as $conversation)
+
+                            @php
+
+                            $explode_img=explode('user-profile/',$conversation->user->image);
+
+                            @endphp
+
+                            @if ($explode_img[1]==null)
+                            <img class="user-prf-img" alt="Profile" src="{{asset('images/no-image.png')}}" />
+                            @else
+                            <img class="user-prf-img" alt="Profile" src="{{asset('storage/user-profile/')}}/{{ $explode_img[1]}}" />
+                            @endif
+
+                            <h5>{{@$conversation->user->first_name}}</h5>
                             <h4> View conversation</h4>
+                            <a class="btn btn-success backbtn" href="{{route('patient-index')}}">Back</a>
                             <div class="row chat_page">
-                                @foreach($conversations as $conversation)
 
                                 @foreach($conversation['chat_data'] as $chat)
-                                <div class="row chat_color" style="background: gainsboro;margin-top: 37px;border-radius: 5px;padding: 19px;">
+                                <div class="row chat_color">
                                     <div class="row">
                                         <div class="col" style="text-align: center;">
                                             {{ $chat->created_at->format('M d, Y') }}
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-3" style="background: beige;padding: 7px;border-radius: 20px;">
-                                            Search Key :{{ $chat->key }}
+                                        <div class="col-5 chatmsg">
+                                            {{ $chat->key }}
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row chatreponse">
                                         <?php
 
                                         $result = ($chat->chat_data) ? json_decode($chat->chat_data) : [];
@@ -43,36 +57,36 @@
                                             $explode_url = explode("https://www.youtube.com/watch?v=", $implode_link);
                                             //  dd( $explode_url );
 
-                                            // dd( $result ,"llll");
-                                            // dd($arr2);
+
                                         } else {
                                             $result = [];
-                                            // dd( $result ,"dsfskfsjkjk");
                                         }
                                         ?>
                                         @if(!empty($result))
-                                        <div style="background: aliceblue;margin-top: 15px;padding: 14px;border-radius: 16px;overflow: auto;">
-                                            <span style="font-size: 22px;font-weight: 700;">Response Name : </span>{{($result)? @$result->response_name : ''}}
+                                        <div class="fullchat">
+                                            <span style="font-size: 22px;font-weight: 700;"></span>{{($result)? @$result->response_name : ''}}
                                         </div>
-                                        <div style="background: aliceblue;margin-top: 15px;padding: 14px;border-radius: 16px;overflow: auto;">
+                                        <!-- <div class="borderchat">
                                             <span style="font-size: 22px;font-weight: 700;">Keywords : </span>{{($result)? @$result->keywords : ''}}
                                         </div>
-                                        <div style="background: aliceblue;margin-top: 15px;padding: 14px;border-radius: 16px;overflow: auto;">
+                                        <div class="borderchat">
                                             <span style="font-size: 22px;font-weight: 700;">Questions : </span>{{($result)? @$result->questions : ''}}
                                         </div>
-                                        <div style="background: aliceblue;margin-top: 15px;padding: 14px;border-radius: 16px;overflow: auto;">
+                                        <div class="borderchat">
                                             <span style="font-size: 22px;font-weight: 700;">Phrases : </span>{{($result)? @$result->phrases : ''}}
-                                        </div>
+                                        </div> -->
 
                                         <div>
 
-
+                                            <div class="borderchat">
+                                                <span class="result" style="font-size: 22px;font-weight: 700;"></span>{{($result)? @$result->video_response : ''}}
+                                            </div>
                                             @foreach(@$explode_url as $key=> $data)
                                             @if($key > 0)
 
 
                                             <div class="media mt-2">
-                                                <div class="media-body">
+                                                <div class="media-body bordervideo">
                                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$data}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </div>
                                             </div>
@@ -81,19 +95,18 @@
                                             @endforeach
                                         </div>
 
-                                        <div style="background: aliceblue;margin-top: 15px;padding: 14px;border-radius: 16px;overflow: auto;">
-                                            <span class="result" style="font-size: 22px;font-weight: 700;">Video Response : </span>{{($result)? @$result->video_response : ''}}
-                                        </div>
+
                                         @else
-                                        <div class="col" style="background: aliceblue;margin-top: 15px;padding: 14px;border-radius: 16px;overflow: auto;">
-                                            <span class="result" style="font-size: 22px;font-weight: 700;">Result : Data not found</span>
+                                        <div class="col-lg-5 msgrespone">
+                                            <span class="result" style="font-size: 18px;">Sorry, but nothing matched. Please consider trying different, fewer, or more general keywords</span>
                                         </div>
                                         @endif
                                     </div>
                                 </div>
                                 @endforeach
-                                @endforeach
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>

@@ -43,6 +43,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Doctor-user-chat
 
     Route::post('/doctor-user-chat', [UserController::class, 'doctorUserChat']);
+    
+    
+     //summery listing
+    Route::post('/summery_list', [UserController::class, 'summeryListing']);
+    
+    
+     //particular chat summery
+    Route::post('/view_summery', [UserController::class, 'viewSummery']);
 
     //summery listing
     Route::post('/summery_list', [UserController::class, 'summeryListing']);

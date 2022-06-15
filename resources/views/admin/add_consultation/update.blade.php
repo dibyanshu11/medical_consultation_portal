@@ -18,7 +18,7 @@
                                 {!! Form::model($consultations, ['route'=>['consultation-update', $consultations->id], 'method'=>'PATCH']) !!}
 
                                 @include('admin.add_consultation.form')
-                                <input type="submit" value="Update Office">
+                                <input type="submit" value="Update Consultation">
                                 {!! Form::close() !!}
                             </div>
                         </div>

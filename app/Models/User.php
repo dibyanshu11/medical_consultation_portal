@@ -39,9 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-
-
-
+  
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -63,10 +61,9 @@ class User extends Authenticatable implements MustVerifyEmail
         // 'status' => StatusEnum::class
     ];
 
-    public function getImageAttribute($value)
-    {
-
-        return env('APP_URL') . '/storage/user-profile/' . $value;
+    public function getImageAttribute($value) {
+        
+        return env('APP_URL').'/public/storage/user-profile/'.$value;
     }
 
 

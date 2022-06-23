@@ -44,7 +44,7 @@ class CreateConsultationController extends Controller
 
     public function storeConsultation(Request $request)
     {
-        //  dd($request->all());
+        // dd($request->all());
 
         $request->validate(
             [
@@ -56,7 +56,7 @@ class CreateConsultationController extends Controller
                 'phrases' => 'required',
                 'video_link' =>  [
                     'required',
-                   
+                    'url',
                     function ($attribute, $requesturl, $failed) {
                         if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
                             $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
@@ -115,7 +115,7 @@ class CreateConsultationController extends Controller
                 'phrases' => 'required',
                 'video_link' =>  [
                     'required',
-                
+                    'url',
                     function ($attribute, $requesturl, $failed) {
                         if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
                             $failed(trans("Please add youtube link", ["name" => trans("general.url")]));

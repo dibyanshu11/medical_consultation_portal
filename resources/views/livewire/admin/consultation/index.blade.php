@@ -47,7 +47,7 @@
                                     <img src="{{asset('images/pen 4.png')}}">
                                 </a>
                                 <a class="delete-button consultation">
-                                    <img src="{{asset('images/delete-24.ico')}}">
+                                    <img src="{{asset('images/delete.png')}}">
                                 </a>
                             </div>
                         </td>

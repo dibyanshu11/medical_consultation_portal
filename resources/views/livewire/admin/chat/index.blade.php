@@ -23,13 +23,13 @@
             </thead>
             <tbody>
                 @foreach($chats as $i => $chat)
-                <tr>
+                    <tr>
                     <input type="hidden" id="select_delete" value="{{$chat->id}}">
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $chat->user->full_name ?? $chat->user->first_name  }}  </td>
-                    <td>{{ @$chat->doctor->full_name }}</td>
-                    <td>{{ $chat->created_at->format('M d, Y')}}</td>
+                    <td>{{ @$chat->user_name}} </td>
+                    <td>{{ @$chat->doctor_name }}</td>
 
+                    <td>{{ date('M d, Y', strtotime(@$chat->created_at)) }}</td>
                     <td>
                         <div class="btn-icon-list">
                             <a href="{{ route('chat-view',$chat->id) }}" class="">

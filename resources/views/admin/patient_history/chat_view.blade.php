@@ -1,5 +1,5 @@
 @extends('layouts.includes.app')
-@section('title', 'Office Profile')
+@section('title', 'View conversation')
 @section('content')
 
 
@@ -10,6 +10,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="add-dctr">
+                            <div class="profile_doc">
                             @foreach($conversations as $conversation)
 
                             @php
@@ -26,7 +27,9 @@
 
                             <h5>{{@$conversation->user->first_name}}</h5>
                             <h4> View conversation</h4>
-                            <a class="btn btn-success backbtn" href="{{route('patient-index')}}">Back</a>
+                            <div class="backbtn">
+                            <a class="btn btn-success backbtn" href="{{route('patient-index')}}">Back</a></div>
+                            </div>
                             <div class="row chat_page">
 
                                 @foreach($conversation['chat_data'] as $chat)
@@ -38,67 +41,49 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-5 chatmsg">
-                                            {{ $chat->key }}
+                                            
+                                      {{ $chat->key }}
+                                     
                                         </div>
                                     </div>
                                     <div class="row chatreponse">
                                         <?php
-
-                                        $result = ($chat->chat_data) ? json_decode($chat->chat_data) : [];
-                                        if (!empty($result[0]->video_link)) {
-                                            $result = $result[0];
-
-
-                                            //explode video link by ','
-                                            $explode_link = explode(",", $result->video_link);
-                                            //And implode by space
-                                            $implode_link = implode("", $explode_link);
-                                            //than explode url
-                                            $explode_url = explode("https://www.youtube.com/watch?v=", $implode_link);
-                                            //  dd( $explode_url );
-
-
-                                        } else {
-                                            $result = [];
-                                        }
+                                        $chatResult = ($chat->chat_data) ? json_decode($chat->chat_data) : [];
                                         ?>
-                                        @if(!empty($result))
-                                        <div class="fullchat">
-                                            <span style="font-size: 22px;font-weight: 700;"></span>{{($result)? @$result->response_name : ''}}
-                                        </div>
-                                        <!-- <div class="borderchat">
-                                            <span style="font-size: 22px;font-weight: 700;">Keywords : </span>{{($result)? @$result->keywords : ''}}
-                                        </div>
-                                        <div class="borderchat">
-                                            <span style="font-size: 22px;font-weight: 700;">Questions : </span>{{($result)? @$result->questions : ''}}
-                                        </div>
-                                        <div class="borderchat">
-                                            <span style="font-size: 22px;font-weight: 700;">Phrases : </span>{{($result)? @$result->phrases : ''}}
-                                        </div> -->
+                                        
+                                        @if( !empty($chatResult))
+                                            @foreach ($chatResult as $chat)
 
-                                        <div>
+                                                <?php
+                                                    $explode_link = explode(",", $chat->video_link);
+                                                    //And implode by space
+                                                    $implode_link = implode("", $explode_link);
+                                                    //than explode url
+                                                    $explode_url = explode("https://www.youtube.com/watch?v=", $implode_link);
+                                                ?>
+                                                <div>
 
-                                            <div class="borderchat">
-                                                <span class="result" style="font-size: 22px;font-weight: 700;"></span>{{($result)? @$result->video_response : ''}}
-                                            </div>
-                                            @foreach(@$explode_url as $key=> $data)
-                                            @if($key > 0)
+                                                    <div class="borderchat" style="background:#e4e4e4;">
+                                                        <span class="result" style="font-size: 22px;font-weight: 700;"></span>{{($chat)? @$chat->video_response : ''}}
+                                                    </div>
+                                                    @foreach(@$explode_url as $key=> $data)
+                                                        @if($key > 0)
 
 
-                                            <div class="media mt-2">
-                                                <div class="media-body bordervideo">
-                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$data}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                        <div class="media mt-2">
+                                                            <div class="media-body bordervideo">
+                                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$data}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                            </div>
+                                                        </div>
+                                                        @endif
+
+                                                    @endforeach
                                                 </div>
-                                            </div>
-                                            @endif
-
                                             @endforeach
-                                        </div>
-
 
                                         @else
                                         <div class="col-lg-5 msgrespone">
-                                            <span class="result" style="font-size: 18px;">Sorry, but nothing matched. Please consider trying different, fewer, or more general keywords</span>
+                                           <span class="result" style="font-size: 18px;">Sorry, but nothing matched. Please consider trying different, fewer, or more general keywords</span>
                                         </div>
                                         @endif
                                     </div>

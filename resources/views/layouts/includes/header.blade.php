@@ -41,8 +41,9 @@
 
                 </li>
                 <li class=" profile-name">
+                    <p class="sub-titel">Welome</p>
                     <p> {{ Auth::user()->first_name }}</p>
-                    <p class="sub-titel">Medical Doctor</p>
+                   
 
                 </li>
             </div>

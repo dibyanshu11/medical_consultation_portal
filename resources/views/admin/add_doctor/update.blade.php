@@ -1,10 +1,10 @@
 @extends('layouts.includes.app')
-@section('title', 'Office Profile')
+@section('title', 'Doctor Update')
 @section('content')
 
 
-<div class="container tab-body">
-    <div row>
+<div class="tab-body">
+    <div class="row">
         <div class="d-flex align-items-start tab-main">
 
             <div class="tab-data col-md-12">

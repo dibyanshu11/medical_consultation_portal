@@ -35,20 +35,19 @@ class AdminDoctorController extends Controller
     {
 
         // dd($request->all());
-        $request->validate(
-            [
+        $request->validate([
 
-                'offices' => 'required',
-                'image' => 'required',
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'practice' => 'required',
-                'intro_video' =>  [
-                    'required',
-
-                    function ($attribute, $requesturl, $failed) {
-                        if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
-                            $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
+            'offices' => 'required',
+            'image' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'practice' => 'required',
+            'intro_video' =>  [
+                'required',
+              
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                         $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
                         }
                     },
                 ],
@@ -110,20 +109,19 @@ class AdminDoctorController extends Controller
     public function  doctorUpdate(Request $request, $id)
     {
 
-        $request->validate(
-            [
-                'offices' => 'required',
-
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'practice' => 'required',
-                'description' => 'required',
-                'intro_video' =>  [
-                    'required',
-
-                    function ($attribute, $requesturl, $failed) {
-                        if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
-                            $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
+        $request->validate([
+            'offices' => 'required',
+          
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'practice' => 'required',
+            'description' => 'required',
+            'intro_video' =>  [
+                'required',
+               
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans("Please add youtube link", ["name" => trans("general.url")]));
                         }
                     },
                 ],
@@ -175,7 +173,7 @@ class AdminDoctorController extends Controller
     }
 
 
-    public function  deactiveDotor($id)
+     public function  deactiveDotor($id)
     {
 
         $deleteOffice = Doctor::where("id", $id)->update(["status" => "deactive"]);
@@ -192,7 +190,6 @@ class AdminDoctorController extends Controller
         return response()->json(['status' => 'Doctor Actived Successfully']);
         return view('admin.add_doctor.index');
     }
-
 
     public function uploadDoctorPhoto(Request $request)
     {

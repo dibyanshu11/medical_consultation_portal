@@ -1,5 +1,5 @@
 @extends('layouts.includes.app')
-
+@section('title', 'Create Consultation')
 @section('content')
 
 

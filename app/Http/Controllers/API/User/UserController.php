@@ -369,13 +369,13 @@ class UserController extends Controller
 
 
                 $searchTerm = '%' . $request->search . '%';
-                $doctors  = Chat::where('user_id', Auth::user()->id)->with('doctor')
+                $doctors  = Chat::where('user_id', Auth::user()->id)->where('status', "1")->with('doctor', 'user')
                     ->whereHas('doctor', function ($query) use ($searchTerm) {
                         $query->whereRaw("concat(first_name, ' ', last_name) like '%" . $searchTerm . "%' ");
                     })->orderBy('id', 'DESC')->get();
             } else {
 
-                $doctors = Chat::where('user_id', Auth::user()->id)->with('doctor', 'user')->get();
+                $doctors = Chat::where('user_id', Auth::user()->id)->where('status', "1")->with('doctor', 'user')->get();
             }
 
             return response()->json([

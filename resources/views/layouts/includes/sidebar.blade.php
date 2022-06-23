@@ -1,4 +1,5 @@
 <ul class="nav-menu">
+    <li class="nav-logo"><img class="" alt="Profile" src="{{asset('images/medical.png')}}" style="width: 214px;"/></li>
     <li>
         <a class="nav-icon1 nav-link{{ request()->routeIs('office-index') ? ' active' : '' }} ?? {{ request()->routeIs('create-office') ? ' active' : '' }} ?? {{ request()->routeIs('office-edit') ? ' active' : '' }}" href="{{ route('office-index') }}">
             <svg class='active' xmlns="http://www.w3.org/2000/svg" version="1.0" width="32px" height="20px" viewBox="-29 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">

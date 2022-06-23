@@ -1,18 +1,18 @@
 @extends('layouts.includes.app')
-
+@section('title', 'Add Doctor')
 @section('content')
 
 
 <div class="tab-body">
     <div class="row">
         <div class="d-flex align-items-start tab-main">
-
+         
             <div class="tab-data">
                 <div class="tab-content" id="v-pills-tabContent">
-
+                  
 
                     @livewire('admin.doctor.index')
-
+                   
                 </div>
             </div>
         </div>

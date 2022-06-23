@@ -1,5 +1,5 @@
 @extends('layouts.includes.app')
-@section('title', 'Office Profile')
+@section('title', 'Add Office')
 @section('content')
 
 

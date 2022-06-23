@@ -24,7 +24,7 @@ class PatientHistoryController extends Controller
 
         $conversations = Chat::where('id', $id)->with('chat_data', 'user', 'doctor')->get();
 
-        //  dd($conversations);
+        //   dd($conversations[0]->chat_data[0]->chat_data);
 
         return view('admin.patient_history.chat_view', compact('conversations'));
     }

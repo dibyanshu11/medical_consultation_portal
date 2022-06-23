@@ -97,7 +97,7 @@
         {!! Form::text('video_link', null, ['id'=>'Phrases','class' => 'form-control' . ($errors->has('video_link') ? ' is-invalid' : '') ]) !!}
         {!! $errors->first('video_link', '<span class="help-block">:message</span>') !!}
     </div>
-    <span><small class="form-text text-muted">Separate keywords with a comma, space bar, or enter key</small></span>
+    <span class="responsetxt"><small class="form-text text-muted">Separate keywords with a comma, space bar, or enter key</small></span>
     <div class="row">
         <div class="col-md-12">
             <label for="response">Create Video Response</label><br>

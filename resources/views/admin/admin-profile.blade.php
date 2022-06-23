@@ -47,12 +47,14 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="change-password">
+                                        <input type="submit" value="Update Email" class="updatemail">
                                         <a class="custom-button" href="{{ route('change-password') }}">Click to change password</a>
                                     </div>
+                                    
                                 </div>
 
                         </div>
-                        <input type="submit" value="Update Email">
+                        
                         </form>
 
 

@@ -12,7 +12,11 @@ class ChatData extends Model
     protected $fillable = [
         'chat_id',
         'key',
+        'audio',
         'chat_data',
+        'status',
+       
+
     ];
 
     public function chat()

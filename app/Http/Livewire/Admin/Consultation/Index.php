@@ -23,13 +23,13 @@ class Index extends Component
             'consultations' =>  Consultation::whereIn('office_id',  $offices)->with('office')->with('doctor')
                 ->where('response_name', 'like', $searchTerm)
                 ->orWhereHas('doctor', function ($query) use ($searchTerm) {
-                    $query->where('full_name', 'like', $searchTerm);
+                    $query->where('first_name', 'like', $searchTerm)
+                        ->orWhere('last_name', 'like', $searchTerm);
                 })
                 ->orWhereHas('office', function ($query) use ($searchTerm) {
                     $query->where('office_name', 'like', $searchTerm);
                 })
                 ->orderBy('id', 'DESC')->paginate(10)
-
 
         ]);
     }

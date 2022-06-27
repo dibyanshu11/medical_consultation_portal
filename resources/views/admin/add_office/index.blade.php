@@ -1,5 +1,5 @@
 @extends('layouts.includes.app')
-
+@section('title', 'Office Profile')
 @section('content')
 
 
@@ -18,7 +18,6 @@
                     </div>
                     
                 </div>
-
             </div>
         </div>
     </div>

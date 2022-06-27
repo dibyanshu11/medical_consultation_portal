@@ -1,5 +1,13 @@
 <div class="doctor-container adddoctor">
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="list-unstyled">
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     @if(@$doctors->doctor_pic)
 
     <div class="row">
@@ -41,9 +49,10 @@
                 <div id="img-preview"></div>
                 <input type="hidden" name="doctor_pic" id="doctor_pic" value="{{@$doctors->doctor_pic}}">
                 <input type="file" name="image" id="file" class="image real-file" />
-                <a type="button" id="btnOpenFileDialog" class="custom-button" onclick="openfileDialog()" ;>Upload Image</a><br>
+                <a type="button" id="btnOpenFileDialog" class="custom-button" onclick="openfileDialog()" ;>Upload Image</a>
+                <br>
 
-                </br>
+
                 <!-- add cropper Model -->
 
 
@@ -57,7 +66,8 @@
                 <div class=" uploadimges">
                     <div id="img-preview"></div>
                     <input type="file" name="image" id="file" class="image real-file" accept="image/*" />
-                    <a type="button" id="btnOpenFileDialog" class="custom-button" onclick="openfileDialog()" ;>Upload Image</a><br>
+                    <a type="button" id="btnOpenFileDialog" class="custom-button" onclick="openfileDialog()" ;>Upload Image</a>
+                    <br>
                     <span id="file-upload-filename">
                 </div>
             </div>
@@ -66,10 +76,51 @@
             {!! $errors->first('image', '<span class="help-block">:message</span>') !!}
             </br>
             @endif
-            </br>
+
         </div>
 
     </div>
+
+    @if(@$doctors->intro_video)
+    <div class="row">
+        <label>Introduction Video</label>
+        <input type="file" name="intro_video" id="videoUpload" accept="video*/">
+        <label for="videoUpload">Select video</label>
+        <video width="320" height="240" src="{{$doctors->intro_video}}" controls>
+            Your browser does not support the video tag.
+        </video>
+        <source src="{{$doctors->intro_video}}" type="video/mp4">
+        <div id="video_name">
+            <!-- Selected file will get here -->
+        </div>
+
+        @if($errors->has('intro_video'))
+        <div class="error">{{ $errors->first('intro_video') }}</div>
+        @endif
+
+    </div>
+    @else
+    <div class="row">
+        <label>Introduction Video</label>
+        <input type="file" name="intro_video" id="videoUpload" accept="video*/">
+        <label for="videoUpload">Select video</label>
+        <video width="320" height="240" controls style="display:none" id="video">
+            Your browser does not support the video tag.
+        </video>
+        <div id="video_name">
+            <!-- Selected file will get here -->
+        </div>
+
+        @if($errors->has('intro_video'))
+        <div class="error">{{ $errors->first('intro_video') }}</div>
+        @endif
+
+    </div>
+
+    @endif
+
+
+
     <div class="row">
 
         <div class="form-group">
@@ -106,14 +157,6 @@
         </div>
     </div>
 
-
-    <div class="form-group">
-        {!! Form::label('intro_video','Introduction Video', ['class' => 'control-label']) !!}
-        {!! Form::text('intro_video', null, ['id'=>'intro_video','class' => 'form-control' . ($errors->has('intro_video') ? ' is-invalid' : '') ]) !!}
-        {!! $errors->first('intro_video', '<span class="help-block">:message</span>') !!}
-    </div>
-
-
     <div class="form-group">
         {!! Form::label('description','Description', ['class' => 'control-label']) !!}
         {!! Form::textarea('description', null, ['id'=>'doctor_description','class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : '') ]) !!}
@@ -122,6 +165,8 @@
     </div>
 
 </div>
+
+
 <link href="{{ asset('css/multi.css') }}" rel="stylesheet">
 
 
@@ -233,4 +278,22 @@
             });
         }
     }
+
+    // upload video
+
+    document.getElementById("videoUpload")
+        .onchange = function(event) {
+            let file = event.target.files[0];
+            let blobURL = URL.createObjectURL(file);
+            document.querySelector("video").src = blobURL;
+            $("#video").attr("style", "display:block");
+        }
+
+    $(document).ready(function() {
+        $('input[name="intro_video"]').change(function(e) {
+            var geekss = e.target.files[0].name;
+            $("#video_name").text(geekss);
+
+        });
+    });
 </script>

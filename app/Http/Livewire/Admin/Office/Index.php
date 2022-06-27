@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Livewire\Admin\Office;
-
 use Livewire\WithPagination;
 use App\Models\Office;
 
@@ -16,15 +15,16 @@ class Index extends Component
     public function render()
     {
 
-        $searchTerm = '%' . $this->searchTerm . '%';
+        $searchTerm = '%'.$this->searchTerm.'%';
 
+    
+        return view('livewire.admin.office.index',[
 
-        return view('livewire.admin.office.index', [
-
-            'offices' => Office::where('user_id', auth()->user()->id)
-                ->where('office_name', 'like', $searchTerm)
-                ->orWhere('address', 'like', $searchTerm)
-                ->orderBy('id', 'DESC')->paginate(10),
+            'offices'=> Office::where('user_id', auth()->user()->id)
+            ->where('office_name','like', $searchTerm)
+            ->orWhere('address','like', $searchTerm)
+            ->orderBy('id', 'DESC')->paginate(10),
         ]);
+      
     }
 }

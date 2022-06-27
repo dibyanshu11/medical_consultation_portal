@@ -24,7 +24,7 @@
                 <div row>
                   
                     <div class="d-flex align-items-start tab-main">
-                        <div class=" menu-bar col-md-3">
+                        <div class="menu-bar">
                             @include('layouts.includes.sidebar')
                         </div>
                         <div class="tab-data col-md-9">

@@ -18,12 +18,18 @@ class Doctor extends Model
         'practice',
         'description',
         'intro_video',
+        'status',
 
     ];
 
     public function getDoctorPicAttribute($value) {
         
         return env('APP_URL').'/storage/doctor-profile/'.$value;
+    }
+
+    public function getIntroVideoAttribute($value) {
+        
+        return env('APP_URL').'/storage/doctor-intro-video/'.$value;
     }
 
 

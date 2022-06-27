@@ -16,11 +16,11 @@ class Index extends Component
     public function render()
     {
 
-        $searchTerm = '%' . $this->searchTerm . '%';
+        $searchTerm = '%'.$this->searchTerm.'%';
         return view('livewire.admin.doctor.index', [
 
-            $office_details = Office::where('user_id', auth()->user()->id)->get()->pluck('id', 'office_name'),
-
+        $office_details = Office::where('user_id', auth()->user()->id)->get()->pluck('id', 'office_name'),
+         
             'doctors' => Doctor::whereIn('office_id', $office_details)
                 ->where('office_name', 'like', $searchTerm)
                 ->orWhere('full_name', 'like', $searchTerm)

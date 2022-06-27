@@ -4,9 +4,10 @@
 <section class="title-box">
     <div class="container">
         <div class="row">
-            <div class="col-12 py-3 py-md-4">
-                <h2 class="page-title">Login</h2>
-            </div>
+        <div class="logo-img">
+        <img class="" alt="Profile" src="{{asset('images/medical.png')}}" style="width: 214px;" />
+    </div>
+            
         </div>
     </div>
 </section>
@@ -14,6 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 col-12">
+                
 
                 <form method="POST" action="{{ route('login') }}" class="login-form">
                     @csrf
@@ -61,12 +63,12 @@
                                 {{ __('Login') }}
                             </button>
                         </div>
-                        <div class="col-md-12 art-submit-btn py-3">
+                        <!-- <div class="col-md-12 art-submit-btn py-3">
                             Don't have an account yet? <a class="btn btn-link" href="{{ route('register') }}">
                                 Register
                             </a>
 
-                        </div>
+                        </div> -->
                     </div>
                 </form>
             </div>

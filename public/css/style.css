@@ -1,18 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.menu-bar {
+    width: 25%;
+}
 .chatmsg {
     padding: 15px 20px;
     background: #040404 !important;
     color: #fff;
     border-radius: 0px 10px 10px 15px;
 }
-
+.menu-bar li {
+    list-style: none;
+}
+span.relative.z-0.inline-flex.rounded-md.shadow-sm {
+    display: none;
+}
+img.user-prf-img.doctorimg {
+    height: 55px;
+    width: 55px;
+}
 .chatreponse {
     justify-content: end;
-}.msgrespone {
+}
+.msgrespone {
     background: #e4e4e4;
     padding: 15px 20px;
     margin-top: 10px;
-    border-radius: 6px 8px 15px 8px;
+    border-radius: 10px 10px 0px 10px;
+}
+.backbtn {
+    text-align: right;
+}
+.backbtn .btn-success{
+border:none !important;
 }
 .chat_page {
     background: #fff;
@@ -23,22 +42,48 @@
 .media-body.bordervideo {
     padding: 10px 10px;
     border: 1px solid #040404;
-    border-radius: 8px;
-    max-width: 580px;
+    border-radius: 10px 10px 0px 10px;
+    max-width: 100%;
 }
-.fullchat{
+.dropdown-item.active, .dropdown-item:active {
+    color: #139980 !important;
+    background-color:transparent !important;
+}
+.swal-button--cancel:focus {
+    box-shadow:none !important;
+}
+button.swal-button.swal-button--confirm.swal-button--danger {
+    background: #139980 !important;
+}
+.fullchat {
     margin-top: 10px;
-    background: #040404 !important;
-    border-radius: 0px 10px 10px 15px;
+    background: #e4e4e4;
+    border-radius: 0px 10px 20px 0px;
     padding: 15px 20px;
-    color:#fff;
+    color: #000;
+    width: 89%;
 }
 
-.borderchat{
-    margin:10px 0px;
+.borderchat {
+    width: 90%;
+    left: 11%;
+    position: relative;
+    margin: 10px 0px;
     padding: 15px 15px;
-    border:1px solid #040404;
-    border-radius: 0px 10px 10px 15px;
+    border: 1px solid #040404;
+    border-radius: 10px 10px 0px 10px;
+}
+.tab-data {
+    width: 100%;
+}
+.media.mt-2 {
+    position: relative;
+    width: 50%;
+    left: 51%;
+}
+.bordervideo iframe {
+    width: 100%;
+    height: 255px;
 }
 .menu-bar {
     display: flex;
@@ -66,8 +111,12 @@ ul.nav-menu {
 ul.nav-menu {
     border-right: solid 2px #f8f8f8;
     position: fixed;
-    padding: 125px 20px 190px 20px;
+      padding: 50px 20px 190px 20px;
     top: 0px;
+}
+
+li.nav-logo{
+    padding-bottom: 30px;
 }
 
 .nav-link.active {
@@ -118,6 +167,17 @@ ul.nav-menu {
 .active svg {
     fill: #139980 !important;
 }
+span#select_doctor {
+    color: red;
+}
+.add-label span.help-block {
+    position: absolute;
+    bottom: -45px;
+    left: 31%;
+}
+button.swal-button--confirm {
+    background: #12997f !important
+}
 .menu-bar .nav-link {
     color: #67686B;
     font-size: 17px;
@@ -128,6 +188,7 @@ ul.nav-menu {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-transform: capitalize;
 }
 
 #select-doctor {
@@ -298,14 +359,35 @@ a.custom-button:hover {
 input[type="submit"] {
     background: #12997f;
     border: #12997f;
-    padding: 13px 35px;
+    padding: 11px 35px;
     border-radius: 10px;
     color: #fff;
     font-family: 'Work Sans';
     font-weight: 600;
     font-size: 14px;
 }
+.form-control:focus{
+    background-color:#f6f6f6 !important; 
+}
 
+.profile_doc {
+    position: relative;
+}
+input.updatemail:hover{
+color:#000;
+}
+.backbtn {
+    position: absolute;
+    right: 0px;
+    top: 35px;
+    text-align: right;
+}
+.profile_doc h5 {
+    padding-top: 5px;
+    color: #12997f;
+    margin-left: 5px;
+    text-transform: capitalize;
+}
 .tab-data h4 {
     font-size: 20px;
     color: #3f3f44;
@@ -525,7 +607,7 @@ select#select-office {
 /*  Patient History */
 
 tr.table-active {
-    --bs-table-accent-bg: #fafafa !important;
+--bs-table-accent-bg: #fafafa !important;
 }
 
 td.tdname {
@@ -556,7 +638,7 @@ tr td {
     font-family: "Work Sans";
 }
 input[type="text"]::placeholder{
-width:22rem !important;
+width:22rem;
 }
 input.updatepass {
     margin-left: 17px;
@@ -1234,11 +1316,45 @@ input[type="submit"] {
 }
 
 @media screen and (max-width: 414px) {
+    .user-profile {
+    height: 85px !important;
+    width: 85px !important;
+}
+    input[type="submit"] {
+    width: 100%;
+}
+    .top-search-bar {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+    .Patient-History-tb.table-sm th {
+    font-size: 11px;
+}
+    .table-sm td, .table-sm th {
+    padding: 0.2rem !important;
+}
+th {
+    font-size: 11px;
+    line-height: 15px;
+}
+    tr td {
+    font-size: 11px;
+}
+img.user-prf-img.doctorimg {
+    height: 37px;
+    width: 37px;
+}
     .tab-data.col-md-9 {
         max-width: 100%;
-        padding: 15px;
+        padding: 15px 7px;
     }
-
+        li {
+    list-style: none;
+}
+  
+td {
+    padding: 10px 0px !important;
+}
     .user_profile {
         position: absolute !important;
         right: 183px !important;
@@ -1263,9 +1379,6 @@ input[type="submit"] {
     }
 
 
-
-
-
     .add-dctr form {
         width: 100% !important;
     }
@@ -1277,7 +1390,6 @@ input[type="submit"] {
 
     input[type="submit"] {
         margin-right: 0px;
-        gap: 20px;
     }
 
     .tab-main {
@@ -1307,7 +1419,7 @@ input[type="submit"] {
 
     ul.doctor-profile {
         list-style: none;
-        padding-top: 25px;
+        padding-top: 10px;
         justify-content: space-between !important;
         padding-left: 0;
     }
@@ -1406,9 +1518,16 @@ input[type="submit"] {
         margin-top: 15px;
         margin-bottom: 10px;
     }
-
+.Patient-History-tb td {
+    font-size: 12px !important;
+}
+.tab-data h4 {
+    padding-left: 20px;
+}
     /* croppie css */
 }
+
+
 
 .user_profile {
     position: relative;
@@ -1562,9 +1681,8 @@ input {
 
 .Video-Link .bootstrap-tagsinput {
     margin: 0;
-    width: 79%;
+    width: 70%;
 }
-
 .doctor-container .text-muted {
     margin-left: 30%;
     margin-bottom: 20px;
@@ -1634,16 +1752,22 @@ img.user-prf-img {
     font-size: 40px;
     line-height: 50px;
     text-align: center;
-    font-weight: 900;
+    font-weight: 700;
 }
-
+a:hover {
+    color: #000 !important;
+}
 .title-box {
     background: #f8f8f8;
+}
+a.btn.btn-link {
+    color:#00bb9a !important;
+    padding: 0px 5px !important;
 }
 
 .login-form label {
     display: block;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 17px;
     line-height: 27px;
     color: #000;
@@ -1658,7 +1782,7 @@ img.user-prf-img {
     width: 100%;
     border: 0px;
     background: #f8f8f8;
-    padding: 15px 6px;
+    padding: 15px 15px;
     margin-bottom: 20px;
     font-family: "Work Sans";
     font-weight: 500;
@@ -1779,12 +1903,41 @@ input::-webkit-inner-spin-button {
 .lower-txt {
     padding: 12px;
 }
-
+.profile_doc img{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
 
 /*verify-email page css end here */
 /*media started here */
 
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+    .responsive_table {
+    overflow-x: auto;
+}
+    .Search-bar {
+    margin-top: 20px;;
+}
+    .chat_page {
+    padding: 31px 15px;
+}
+   .chat_page .col-5{
+       max-width:100% !important;
+           flex: 0 0 100%;
+   }
+   .media.mt-2 {
+    position: relative;
+    width: 100%;
+    left: 25%;
+}
+
+.borderchat {
+    width: 100%;
+    left: 25%;
+    border-radius: 0px 10px 20px 0px;
+}
+}
 
 /*media end here */
 /* -------------------------------------*/
@@ -1799,10 +1952,10 @@ input::-webkit-inner-spin-button {
 }
 
 
-.change-password {
-    display: flex;
-    justify-content: end;
-}
+/*.change-password {*/
+/*    display: flex;*/
+/*    justify-content: end;*/
+/*}*/
 .change-password a {
     text-transform: capitalize;
 }
@@ -1850,4 +2003,15 @@ a.active_status{
 }
 a.deactive_status{
 color:red !important;
+}
+
+.logo-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+.chatreponse > div:nth-child(1) > div:nth-child(1) {
+	border:1px solid transparent;
+background:#e4e4e4 !important;
 }

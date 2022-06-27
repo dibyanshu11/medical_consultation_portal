@@ -13,6 +13,7 @@
         </div>
 
     </div>
+    <div class="responsive_table ">
     <table class="table  table-borderless Patient-History-tb table-sm datatable data-table">
         <thead>
             <tr>
@@ -39,7 +40,7 @@
                             <img src="{{asset('images/pen 4.png')}}">
                         </a>
                         <a class="delete-button office">
-                            <img src="{{asset('images/delete-24.ico')}}">
+                            <img src="{{asset('images/delete.png')}}">
                         </a>
                     </div>
                 </td>
@@ -50,5 +51,6 @@
 
         </tbody>
     </table>
+    </div>
     {{ $offices->links()}}
 </div>

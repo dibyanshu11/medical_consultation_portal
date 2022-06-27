@@ -89,9 +89,9 @@ class DoctorController extends Controller
                     //insert data in chatData table
                     $save_chat_data = new ChatData;
                     if ($request->has('audio')) {
-                        
+
                         $music_file = $request->file('audio');
-                       
+
                         $filename = $music_file->getClientOriginalName();
                         $location = public_path('/storage/user-audio/');
                         $music_file->move($location, $filename);
@@ -109,13 +109,23 @@ class DoctorController extends Controller
                     $save_chat_data->key = $request->search;
                     $save_chat_data->save();
 
-                    return response()->json([
-                        "ReturnCode" => 1,
-                        "data" => $consultation,
-                        "SearchKey" => $request->search,
-                        "audio"=>$filename,
-                        "chat_id" => $create_chat->id,
-                    ], 200);
+                    if ($request->has('audio')) {
+                        return response()->json([
+                            "ReturnCode" => 1,
+                            "data" => $consultation,
+                            "SearchKey" => $request->search,
+                            "audio" => $filename,
+                            "chat_id" => $create_chat->id,
+                        ], 200);
+                    } else {
+                        return response()->json([
+                            "ReturnCode" => 1,
+                            "data" => $consultation,
+                            "SearchKey" => $request->search,
+
+                            "chat_id" => $create_chat->id,
+                        ], 200);
+                    }
                 } else {
 
                     //first check chat is already exists
@@ -131,13 +141,13 @@ class DoctorController extends Controller
                         }
 
                         if ($request->has('audio')) {
-                        
+
                             $music_file = $request->file('audio');
-                           
+
                             $filename = $music_file->getClientOriginalName();
                             $location = public_path('/storage/user-audio/');
                             $music_file->move($location, $filename);
-    
+
                             $save_chat_data->audio = $filename;
                         }
 
@@ -148,12 +158,24 @@ class DoctorController extends Controller
                         return "please check chat id or doctor id";
                     }
 
-                    return response()->json([
-                        "ReturnCode" => 1,
-                        "data" => $consultation,
-                        "SearchKey" => $request->search,
+                 
 
-                    ], 200);
+
+                    if ($request->has('audio')) {
+                        return response()->json([
+                            "ReturnCode" => 1,
+                            "data" => $consultation,
+                            "SearchKey" => $request->search,
+                            "audio" => $filename,
+
+                        ], 200);
+                    } else {
+                        return response()->json([
+                            "ReturnCode" => 1,
+                            "data" => $consultation,
+                            "SearchKey" => $request->search,
+                        ], 200);
+                    }
                 }
             } catch (ModelNotFoundException $e) {
                 return response()->json([

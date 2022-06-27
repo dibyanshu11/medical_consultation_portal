@@ -24,7 +24,12 @@ class Doctor extends Model
 
     public function getDoctorPicAttribute($value) {
         
-        return env('APP_URL').'/public/storage/doctor-profile/'.$value;
+        return env('APP_URL').'/storage/doctor-profile/'.$value;
+    }
+
+    public function getIntroVideoAttribute($value) {
+        
+        return env('APP_URL').'/storage/doctor-intro-video/'.$value;
     }
 
 
